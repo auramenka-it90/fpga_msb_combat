@@ -1,0 +1,55 @@
+set -tmpdir .
+set -xsthdpdir "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst"
+run
+-ifn msb_main.prj
+-ifmt mixed
+-ofn msb_main
+-ofmt NGC
+-p xc6slx4tqg144-3
+-top msb_main
+-opt_mode speed
+-opt_level 1
+-power no
+-iuc no
+-glob_opt allclocknets
+-rtlview yes
+-write_timing_constraints no
+-keep_hierarchy no
+-netlist_hierarchy as_optimized
+-hierarchy_separator /
+-bus_delimiter <>
+-case maintain
+-cross_clock_analysis no
+-slice_utilization_ratio 100
+-bram_utilization_ratio 100
+-dsp_utilization_ratio 100
+-read_cores yes
+-generics {  }
+-define {  }
+-fsm_extract yes -fsm_encoding Auto
+-resource_sharing yes
+-fsm_style lut
+-ram_extract yes
+-ram_style auto
+-rom_extract yes
+-rom_style auto
+-auto_bram_packing no
+-shreg_extract yes
+-shreg_min_size 2
+-use_dsp48 auto
+-async_to_sync no
+-iobuf yes
+-max_fanout 100000
+-bufg 16
+-register_duplication yes
+-equivalent_register_removal yes
+-register_balancing no
+-iob auto
+-lc auto
+-reduce_control_sets auto
+-optimize_primitives no
+-safe_implementation no
+-use_clock_enable auto
+-use_sync_set auto
+-use_sync_reset auto
+-slice_utilization_ratio_maxmargin 5

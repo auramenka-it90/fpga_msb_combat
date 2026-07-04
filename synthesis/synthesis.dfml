@@ -1,0 +1,669 @@
+Release 14.7 - xst P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> Parameter TMPDIR set to .
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> Parameter xsthdpdir set to d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.03 secs
+ 
+--> 
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input File Name                    : "msb_main.prj"
+Input Format                       : mixed
+Ignore Synthesis Constraint File   : no
+
+---- Target Parameters
+Output File Name                   : "msb_main"
+Output Format                      : NGC
+Target Device                      : xc6slx4tqg144-3
+
+---- Source Options
+Top Module Name                    : msb_main
+Generics, Parameters               : {  }
+Verilog Macros                     : {  }
+Automatic FSM Extraction           : yes
+FSM Encoding Algorithm             : Auto
+Resource Sharing                   : yes
+FSM Style                          : lut
+RAM Extraction                     : yes
+RAM Style                          : auto
+ROM Extraction                     : yes
+ROM Style                          : auto
+Shift Register Extraction          : yes
+Shift Register Minimum Size        : 2
+Use DSP Block                      : auto
+Asynchronous To Synchronous        : no
+Automatic Register Balancing       : no
+Safe Implementation                : no
+
+---- Target Options
+Add IO Buffers                     : yes
+Global Maximum Fanout              : 100000
+Add Generic Clock Buffer(BUFG)     : 16
+Register Duplication               : yes
+Equivalent register Removal        : yes
+Pack IO Registers into IOBs        : auto
+LUT Combining                      : auto
+Reduce Control Sets                : auto
+Optimize Instantiated Primitives   : no
+Use Clock Enable                   : auto
+Use Synchronous Set                : auto
+Use Synchronous Reset              : auto
+
+---- General Options
+Optimization Goal                  : speed
+Optimization Effort                : 1
+Power Reduction                    : no
+Global Optimization                : allclocknets
+RTL Output                         : yes
+Write Timing Constraints           : no
+Keep Hierarchy                     : no
+Netlist Hierarchy                  : as_optimized
+Hierarchy Separator                : /
+Bus Delimiter                      : <>
+Case Specifier                     : maintain
+Cross Clock Analysis               : no
+Slice Utilization Ratio            : 100
+BRAM Utilization Ratio             : 100
+DSP48 Utilization Ratio            : 100
+Read Cores                         : yes
+Auto BRAM Packing                  : no
+Slice Utilization Ratio Delta      : 5
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\define.v" into library msb_combat
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v" into library msb_combat
+Parsing verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\/define.v" included at line 1.
+Parsing module <msb_main>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\system_clk_rst.v" into library msb_combat
+Parsing verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\/define.v" included at line 1.
+Parsing module <system_clk_rst>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\programmable_tick_divider.v" into library msb_combat
+Parsing module <programmable_tick_divider>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\stm32_2_fpga_spi_bridge\spi_stm32_fpga_bridge.v" into library msb_combat
+Parsing module <spi_stm32_fpga_bridge>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\stm32_2_fpga_spi_bridge\spi_stm32_multi_word_bridge.v" into library msb_combat
+Parsing module <spi_stm32_multi_word_bridge>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules\debug_module.v" into library msb_combat
+Parsing verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\/define.v" included at line 2.
+Parsing module <debug_module>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\debounce_filter .v" into library msb_combat
+Parsing module <debounce_filter>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules\fcs_module .v" into library msb_combat
+Parsing verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\/define.v" included at line 1.
+Parsing module <fcs_module>.
+Analyzing Verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules\interrupt_controller.v" into library msb_combat
+Parsing verilog file "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\/define.v" included at line 2.
+Parsing module <interrupt_controller>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating module <msb_main>.
+
+Elaborating module <system_clk_rst>.
+
+Elaborating module <IBUFG>.
+
+Elaborating module <DCM_SP(CLKFX_MULTIPLY=5,CLKFX_DIVIDE=3,CLKIN_PERIOD=16.666667,CLK_FEEDBACK="1X")>.
+
+Elaborating module <BUFG>.
+
+Elaborating module <spi_stm32_fpga_bridge>.
+
+Elaborating module <debug_module(ADR_WIDTH=6)>.
+
+Elaborating module <fcs_module(ADR_WIDTH=6,IN_WIDTH=31,OUT_WIDTH=8)>.
+
+Elaborating module <debounce_filter>.
+
+Elaborating module <programmable_tick_divider>.
+
+Elaborating module <interrupt_controller(ADR_WIDTH=6,IRQ_LINES=1)>.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <msb_main>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v".
+INFO:Xst:3210 - "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v" line 83: Output port <busy> of the instance <spi_bridge_inst> is unconnected or connected to loadless signal.
+    Found 16-bit 4-to-1 multiplexer for signal <_n0060> created at line 79.
+    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 226
+    Summary:
+	inferred   7 Multiplexer(s).
+	inferred   1 Tristate(s).
+Unit <msb_main> synthesized.
+
+Synthesizing Unit <system_clk_rst>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\system_clk_rst.v".
+    Found 8-bit register for signal <sync_reg>.
+    Found 17-bit register for signal <tick_cnt>.
+    Found 1-bit register for signal <tick_1khz>.
+    Found 17-bit adder for signal <tick_cnt[16]_GND_2_o_add_3_OUT> created at line 68.
+    Found 17-bit comparator greater for signal <n0003> created at line 64
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  26 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+Unit <system_clk_rst> synthesized.
+
+Synthesizing Unit <spi_stm32_fpga_bridge>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\stm32_2_fpga_spi_bridge\spi_stm32_fpga_bridge.v".
+    Found 2-bit register for signal <nss_sync>.
+    Found 2-bit register for signal <mosi_sync>.
+    Found 6-bit register for signal <bit_cnt>.
+    Found 32-bit register for signal <rx_shifter>.
+    Found 16-bit register for signal <tx_shifter>.
+    Found 10-bit register for signal <addr>.
+    Found 16-bit register for signal <dout>.
+    Found 1-bit register for signal <wr_strobe>.
+    Found 1-bit register for signal <rd>.
+    Found 1-bit register for signal <is_write>.
+    Found 1-bit register for signal <spi_out>.
+    Found 2-bit register for signal <sck_sync<1:0>>.
+    Found 6-bit adder for signal <bit_cnt[5]_GND_7_o_add_10_OUT> created at line 95.
+    Found 6-bit comparator greater for signal <GND_7_o_bit_cnt[5]_LessThan_24_o> created at line 133
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred  90 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   8 Multiplexer(s).
+Unit <spi_stm32_fpga_bridge> synthesized.
+
+Synthesizing Unit <debug_module>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules\debug_module.v".
+        ADR_WIDTH = 6
+    Found 16-bit register for signal <misc_reg>.
+    Found 16-bit register for signal <fb_reg>.
+    Summary:
+	inferred  32 D-type flip-flop(s).
+	inferred   3 Multiplexer(s).
+Unit <debug_module> synthesized.
+
+Synthesizing Unit <fcs_module>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules\fcs_module .v".
+        ADR_WIDTH = 6
+        IN_WIDTH = 31
+        OUT_WIDTH = 8
+    Found 15-bit register for signal <reg_hard0_soft1_2>.
+    Found 16-bit register for signal <reg_soft_value_1>.
+    Found 15-bit register for signal <reg_soft_value_2>.
+    Found 16-bit register for signal <reg_inv_1>.
+    Found 4-bit register for signal <reg_inv_2>.
+    Found 8-bit register for signal <reg_fcs_control>.
+    Found 1-bit register for signal <reg_latch_en>.
+    Found 1-bit register for signal <fcs_jk_out>.
+    Found 16-bit register for signal <status_1_reg>.
+    Found 15-bit register for signal <status_2_reg>.
+    Found 1-bit register for signal <status_jk_reg>.
+    Found 16-bit register for signal <reg_hard0_soft1_1>.
+    Summary:
+	inferred 124 D-type flip-flop(s).
+	inferred  55 Multiplexer(s).
+Unit <fcs_module> synthesized.
+
+Synthesizing Unit <debounce_filter>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\debounce_filter .v".
+    Found 2-bit register for signal <debounce_cnt>.
+    Found 1-bit register for signal <clean_out>.
+    Found 2-bit register for signal <sync_reg>.
+    Found 2-bit adder for signal <debounce_cnt[1]_GND_10_o_add_6_OUT> created at line 54.
+    Found 1-bit comparator equal for signal <synced_in_clean_out_equal_5_o> created at line 44
+    Summary:
+	inferred   1 Adder/Subtractor(s).
+	inferred   5 D-type flip-flop(s).
+	inferred   1 Comparator(s).
+	inferred   1 Multiplexer(s).
+Unit <debounce_filter> synthesized.
+
+Synthesizing Unit <programmable_tick_divider>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\programmable_tick_divider.v".
+    Found 1-bit register for signal <tick_out>.
+    Found 8-bit register for signal <tick_counter>.
+    Found 8-bit subtractor for signal <din[7]_GND_11_o_sub_2_OUT> created at line 15.
+    Found 8-bit adder for signal <tick_counter[7]_GND_11_o_add_6_OUT> created at line 31.
+    Found 8-bit comparator lessequal for signal <n0002> created at line 26
+    Found 8-bit comparator greater for signal <GND_11_o_din[7]_LessThan_6_o> created at line 29
+    Summary:
+	inferred   2 Adder/Subtractor(s).
+	inferred   9 D-type flip-flop(s).
+	inferred   2 Comparator(s).
+	inferred   2 Multiplexer(s).
+Unit <programmable_tick_divider> synthesized.
+
+Synthesizing Unit <interrupt_controller>.
+    Related source file is "D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules\interrupt_controller.v".
+        ADR_WIDTH = 6
+        IRQ_LINES = 1
+    Found 1-bit register for signal <sync2_reg>.
+    Found 1-bit register for signal <sync3_reg>.
+    Found 1-bit register for signal <pending_reg>.
+    Found 1-bit register for signal <mask_reg>.
+    Found 1-bit register for signal <edge_sel_reg>.
+    Found 16-bit register for signal <ctrl_reg>.
+    Found 1-bit register for signal <sync1_reg>.
+    Summary:
+	inferred  22 D-type flip-flop(s).
+	inferred   6 Multiplexer(s).
+Unit <interrupt_controller> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 24
+ 17-bit adder                                          : 1
+ 2-bit adder                                           : 20
+ 6-bit adder                                           : 1
+ 8-bit adder                                           : 1
+ 8-bit subtractor                                      : 1
+# Registers                                            : 97
+ 1-bit register                                        : 34
+ 10-bit register                                       : 1
+ 15-bit register                                       : 2
+ 16-bit register                                       : 10
+ 17-bit register                                       : 1
+ 2-bit register                                        : 43
+ 32-bit register                                       : 1
+ 4-bit register                                        : 1
+ 6-bit register                                        : 1
+ 8-bit register                                        : 3
+# Comparators                                          : 24
+ 1-bit comparator equal                                : 20
+ 17-bit comparator greater                             : 1
+ 6-bit comparator greater                              : 1
+ 8-bit comparator greater                              : 1
+ 8-bit comparator lessequal                            : 1
+# Multiplexers                                         : 101
+ 1-bit 2-to-1 multiplexer                              : 63
+ 16-bit 2-to-1 multiplexer                             : 16
+ 16-bit 4-to-1 multiplexer                             : 1
+ 2-bit 2-to-1 multiplexer                              : 20
+ 8-bit 2-to-1 multiplexer                              : 1
+# Tristates                                            : 1
+ 1-bit tristate buffer                                 : 1
+
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+WARNING:Xst:2677 - Node <rx_shifter_16> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_17> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_18> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_19> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_20> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_21> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_22> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_23> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_24> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_25> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_26> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_27> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_28> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_29> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_30> of sequential type is unconnected in block <spi_bridge_inst>.
+WARNING:Xst:2677 - Node <rx_shifter_31> of sequential type is unconnected in block <spi_bridge_inst>.
+
+Synthesizing (advanced) Unit <programmable_tick_divider>.
+The following registers are absorbed into counter <tick_counter>: 1 register on signal <tick_counter>.
+Unit <programmable_tick_divider> synthesized (advanced).
+
+Synthesizing (advanced) Unit <spi_stm32_fpga_bridge>.
+The following registers are absorbed into counter <bit_cnt>: 1 register on signal <bit_cnt>.
+Unit <spi_stm32_fpga_bridge> synthesized (advanced).
+
+Synthesizing (advanced) Unit <system_clk_rst>.
+The following registers are absorbed into counter <tick_cnt>: 1 register on signal <tick_cnt>.
+Unit <system_clk_rst> synthesized (advanced).
+WARNING:Xst:2677 - Node <rx_shifter_16> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_17> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_18> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_19> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_20> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_21> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_22> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_23> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_24> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_25> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_26> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_27> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_28> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_29> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_30> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+WARNING:Xst:2677 - Node <rx_shifter_31> of sequential type is unconnected in block <spi_stm32_fpga_bridge>.
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Macro Statistics
+# Adders/Subtractors                                   : 21
+ 2-bit adder                                           : 20
+ 8-bit subtractor                                      : 1
+# Counters                                             : 3
+ 17-bit up counter                                     : 1
+ 6-bit up counter                                      : 1
+ 8-bit up counter                                      : 1
+# Registers                                            : 356
+ Flip-Flops                                            : 356
+# Comparators                                          : 24
+ 1-bit comparator equal                                : 20
+ 17-bit comparator greater                             : 1
+ 6-bit comparator greater                              : 1
+ 8-bit comparator greater                              : 1
+ 8-bit comparator lessequal                            : 1
+# Multiplexers                                         : 75
+ 1-bit 2-to-1 multiplexer                              : 58
+ 16-bit 2-to-1 multiplexer                             : 15
+ 16-bit 4-to-1 multiplexer                             : 1
+ 8-bit 2-to-1 multiplexer                              : 1
+
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <msb_main> ...
+
+Optimizing unit <system_clk_rst> ...
+
+Optimizing unit <spi_stm32_fpga_bridge> ...
+
+Optimizing unit <fcs_module> ...
+
+Optimizing unit <debounce_filter> ...
+
+Optimizing unit <debug_module> ...
+
+Optimizing unit <programmable_tick_divider> ...
+
+Optimizing unit <interrupt_controller> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block msb_main, actual ratio is 25.
+FlipFlop spi_bridge_inst/addr_6 has been replicated 1 time(s)
+
+Final Macro Processing ...
+
+Processing Unit <msb_main> :
+INFO:Xst:741 - HDL ADVISOR - A 8-bit shift register was found for signal <u_sys_clk_rst/sync_reg_7> and currently occupies 8 logic cells (4 slices). Removing the set/reset logic would take advantage of SRL32 (and derived) primitives and reduce this to 1 logic cells (1 slices). Evaluate if the set/reset can be removed for this simple shift register. The majority of simple pipeline structures do not need to be set/reset operationally.
+Unit <msb_main> processed.
+
+=========================================================================
+Final Register Report
+
+Macro Statistics
+# Registers                                            : 388
+ Flip-Flops                                            : 388
+
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : msb_main.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 526
+#      GND                         : 1
+#      INV                         : 13
+#      LUT1                        : 23
+#      LUT2                        : 71
+#      LUT3                        : 197
+#      LUT4                        : 16
+#      LUT5                        : 56
+#      LUT6                        : 99
+#      MUXCY                       : 23
+#      MUXF7                       : 1
+#      VCC                         : 1
+#      XORCY                       : 25
+# FlipFlops/Latches                : 388
+#      FD                          : 8
+#      FDP                         : 8
+#      FDR                         : 95
+#      FDRE                        : 275
+#      FDS                         : 2
+# Clock Buffers                    : 2
+#      BUFG                        : 2
+# IO Buffers                       : 54
+#      IBUF                        : 35
+#      IBUFG                       : 1
+#      OBUF                        : 17
+#      OBUFT                       : 1
+# DCMs                             : 1
+#      DCM_SP                      : 1
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx4tqg144-3 
+
+
+Slice Logic Utilization: 
+ Number of Slice Registers:             388  out of   4800     8%  
+ Number of Slice LUTs:                  475  out of   2400    19%  
+    Number used as Logic:               475  out of   2400    19%  
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:    551
+   Number with an unused Flip Flop:     163  out of    551    29%  
+   Number with an unused LUT:            76  out of    551    13%  
+   Number of fully used LUT-FF pairs:   312  out of    551    56%  
+   Number of unique control sets:        38
+
+IO Utilization: 
+ Number of IOs:                          54
+ Number of bonded IOBs:                  54  out of    102    52%  
+
+Specific Feature Utilization:
+ Number of BUFG/BUFGCTRLs:                2  out of     16    12%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)  | Load  |
+-----------------------------------+------------------------+-------+
+clk_60mHz                          | DCM_SP:CLKFX           | 388   |
+-----------------------------------+------------------------+-------+
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: 8.740ns (Maximum Frequency: 114.422MHz)
+   Minimum input arrival time before clock: 5.287ns
+   Maximum output required time after clock: 5.976ns
+   Maximum combinational path delay: 5.157ns
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'clk_60mHz'
+  Clock period: 8.740ns (frequency: 114.422MHz)
+  Total number of paths / destination ports: 6150 / 1031
+-------------------------------------------------------------------------
+Delay:               5.244ns (Levels of Logic = 4)
+  Source:            u_debug_module/misc_reg_7 (FF)
+  Destination:       u_tick_divider/tick_counter_5 (FF)
+  Source Clock:      clk_60mHz rising 1.7X
+  Destination Clock: clk_60mHz rising 1.7X
+
+  Data Path: u_debug_module/misc_reg_7 to u_tick_divider/tick_counter_5
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             7   0.447   1.118  u_debug_module/misc_reg_7 (u_debug_module/misc_reg_7)
+     LUT5:I0->O           19   0.203   1.072  u_tick_divider/Mcount_tick_counter_val131 (u_tick_divider/Mcount_tick_counter_val13)
+     LUT6:I5->O            3   0.205   0.879  u_tick_divider/count_limit[7]_tick_counter[7]_LessThan_5_o15_SW0 (N12)
+     LUT5:I2->O            1   0.205   0.808  u_tick_divider/Mcount_tick_counter_val1_SW6 (N89)
+     LUT6:I3->O            1   0.205   0.000  u_tick_divider/tick_counter_5_rstpot (u_tick_divider/tick_counter_5_rstpot)
+     FD:D                      0.102          u_tick_divider/tick_counter_5
+    ----------------------------------------
+    Total                      5.244ns (1.367ns logic, 3.877ns route)
+                                       (26.1% logic, 73.9% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'clk_60mHz'
+  Total number of paths / destination ports: 45 / 45
+-------------------------------------------------------------------------
+Offset:              5.287ns (Levels of Logic = 5)
+  Source:            DR<10> (PAD)
+  Destination:       spi_bridge_inst/tx_shifter_10 (FF)
+  Destination Clock: clk_60mHz rising 1.7X
+
+  Data Path: DR<10> to spi_bridge_inst/tx_shifter_10
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.222   0.808  DR_10_IBUF (DR_10_IBUF)
+     LUT3:I0->O            2   0.205   0.845  u_fcs_module/Mmux_fcs_processed<10>11 (u_fcs_module/fcs_processed<10>)
+     LUT6:I3->O            1   0.205   0.808  spi_bridge_inst/Mmux_tx_shifter[15]_tx_shifter[15]_mux_27_OUT21 (spi_bridge_inst/Mmux_tx_shifter[15]_tx_shifter[15]_mux_27_OUT2)
+     LUT6:I3->O            1   0.205   0.684  spi_bridge_inst/Mmux_tx_shifter[15]_tx_shifter[15]_mux_27_OUT24_SW0 (N120)
+     LUT5:I3->O            1   0.203   0.000  spi_bridge_inst/Mmux_tx_shifter[15]_tx_shifter[15]_mux_27_OUT24 (spi_bridge_inst/tx_shifter[15]_tx_shifter[15]_mux_27_OUT<10>)
+     FDRE:D                    0.102          spi_bridge_inst/tx_shifter_10
+    ----------------------------------------
+    Total                      5.287ns (2.142ns logic, 3.145ns route)
+                                       (40.5% logic, 59.5% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_60mHz'
+  Total number of paths / destination ports: 18 / 16
+-------------------------------------------------------------------------
+Offset:              5.976ns (Levels of Logic = 2)
+  Source:            u_sys_clk_rst/sync_reg_7 (FF)
+  Destination:       tp<7> (PAD)
+  Source Clock:      clk_60mHz rising 1.7X
+
+  Data Path: u_sys_clk_rst/sync_reg_7 to tp<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDP:C->Q            304   0.447   2.176  u_sys_clk_rst/sync_reg_7 (u_sys_clk_rst/sync_reg_7)
+     LUT2:I0->O            1   0.203   0.579  tp<7>1 (tp_7_OBUF)
+     OBUF:I->O                 2.571          tp_7_OBUF (tp<7>)
+    ----------------------------------------
+    Total                      5.976ns (3.221ns logic, 2.755ns route)
+                                       (53.9% logic, 46.1% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 2 / 2
+-------------------------------------------------------------------------
+Delay:               5.157ns (Levels of Logic = 3)
+  Source:            w25q128_nss (PAD)
+  Destination:       tp<7> (PAD)
+
+  Data Path: w25q128_nss to tp<7>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUF:I->O             1   1.222   0.580  w25q128_nss_IBUF (w25q128_nss_IBUF)
+     LUT2:I1->O            1   0.205   0.579  tp<7>1 (tp_7_OBUF)
+     OBUF:I->O                 2.571          tp_7_OBUF (tp<7>)
+    ----------------------------------------
+    Total                      5.157ns (3.998ns logic, 1.159ns route)
+                                       (77.5% logic, 22.5% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+Clock to Setup on destination clock clk_60mHz
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+clk_60mHz      |    5.244|         |         |         |
+---------------+---------+---------+---------+---------+
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 3.00 secs
+Total CPU time to Xst completion: 3.43 secs
+ 
+--> 
+
+Total memory usage is 4488080 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   32 (   0 filtered)
+Number of infos    :    2 (   0 filtered)
+

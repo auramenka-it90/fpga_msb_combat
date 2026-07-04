@@ -1,0 +1,10 @@
+i<>.\src\define.v
+i<>.\src\msb_main.v
+i<>.\src\system_clk_rst.v
+i<>.\src\programmable_tick_divider.v
+i<>.\src\stm32_2_fpga_spi_bridge\spi_stm32_fpga_bridge.v
+i<>.\src\stm32_2_fpga_spi_bridge\spi_stm32_multi_word_bridge.v
+i<>.\src\modules\debug_module.v
+i<>.\src\debounce_filter .v
+i<>.\src\modules\fcs_module .v
+i<>.\src\modules\interrupt_controller.v

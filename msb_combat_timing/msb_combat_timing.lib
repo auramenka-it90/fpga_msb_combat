@@ -1,0 +1,35 @@
+timestamp=1782923417855
+
+[$root]
+A/$root=22|""|0|1*0
+BinI32/$root=3*0
+Version=9.2.2499.4581  (Windows)|00000033789cd3cd51c82d4e8a4fcecf4d4a2c892fc9cccdcc4b57d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00be18113b
+
+[glbl]
+A/glbl=22|./../IMPLEMENT/TIME_SIM.V|15960|1*950953
+BinI32/glbl=3*29837
+R=./../IMPLEMENT/TIME_SIM.V|15960
+Version=9.2.2499.4581  (Windows)|00000033789cd3cd51c82d4e8a4fcecf4d4a2c892fc9cccdcc4b57d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00be18113b
+
+[msb_main]
+A/msb_main=22|./../IMPLEMENT/TIME_SIM.V|36|1*390
+BinI32/msb_main=3*139
+R=./../IMPLEMENT/TIME_SIM.V|36
+Version=9.2.2499.4581  (Windows)|00000033789cd3cd51c82d4e8a4fcecf4d4a2c892fc9cccdcc4b57d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b00be18113b
+
+[~A]
+LastVerilogToplevel=glbl
+ModifyID=18
+Version=73
+d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/IMPLEMENT/TIME_SIM.V=0*102448*188944
+
+[~MFT]
+0=4|0msb_combat_timing.mgf|188944|0
+1=2|1msb_combat_timing.mgf|950953|0
+3=2|3msb_combat_timing.mgf|29837|0
+
+[~U]
+$root=12|0*0|
+glbl=12|0*102304||0x10
+msb_main=12|0*246||0x10
+
