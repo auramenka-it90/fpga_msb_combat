@@ -1,20 +1,21 @@
 # =============================================================================
 # TIMING CONSTRAINTS
 # =============================================================================
-# Primary 60 MHz input clock (Period = 16.667 ns)
+# Primary 60 MHz input clock (Period = 1.667 ns)
 NET "clk_60mHz" TNM_NET = "TNM_IN_CLK";
-TIMESPEC "TS_IN_CLK" = PERIOD "TNM_IN_CLK" 16.667 ns HIGH 50%;
+TIMESPEC "TS_IN_CLK" = PERIOD "TNM_IN_CLK" 1.6667 ns HIGH 50%;
 
 # =============================================================================
 # PHYSICAL PIN CONSTRAINTS (Spartan-6 XC6SLX4-TQG144)
 # =============================================================================
 
 # --- System Clock ---
-# NET "clk_60mHz"            LOC = "P55"  | IOSTANDARD = LVCMOS33; # 60 MHz Oscillator (uncomment if needed)
+# FIXED: Uncommented to ensure the FPGA receives the primary clock signal
+NET "clk_60mHz"            LOC = "P55"  | IOSTANDARD = LVCMOS33; # 60 MHz Oscillator
 
 # --- SPI Chip Select Lines ---
 NET "spi_stm32_nss_p"      LOC = "P48"  | IOSTANDARD = LVCMOS33; # CS Polling (misc0)
-NET "spi_stm32_nss_d"      LOC = "P50"  | IOSTANDARD = LVCMOS33; # CS DMA (misc2)
+#NET "spi_stm32_nss_d"      LOC = "P50"  | IOSTANDARD = LVCMOS33; # CS DMA (misc2)
 
 # --- SPI Shared Data Bus (Runtime Communication) ---
 NET "spi_stm32_mosi"       LOC = "P64"  | IOSTANDARD = LVCMOS33; # MOSI (Flash DQ0)
@@ -84,6 +85,7 @@ NET "led[1]"               LOC = "P27"  | IOSTANDARD = LVCMOS33; # VD36 (Yellow)
 NET "led[2]"               LOC = "P29"  | IOSTANDARD = LVCMOS33; # VD37 (Red)
 
 # --- Diagnostic Test Points (TP[7:5]) ---
-NET "tp[7]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
+# FIXED: Reordered to match the physical assignments in msb_main.v
+NET "tp[5]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
 NET "tp[6]"                LOC = "P80"  | IOSTANDARD = LVCMOS33; # TP6 on P80 (1 kHz Reference Clock)
-NET "tp[5]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)
+NET "tp[7]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)

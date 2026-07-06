@@ -26,7 +26,7 @@ module system_clk_rst (
     DCM_SP #(
         .CLKFX_MULTIPLY(5),       // ”множитель изменен на 5 (было 4)
         .CLKFX_DIVIDE(3),         // ƒелитель изменен на 3 (было 1)
-        .CLKIN_PERIOD(16.666667), // ѕериод дл€ 60 ћ√ц = 16.666667 нс (было 40.0)
+    //    .CLKIN_PERIOD(16.666667), // ѕериод дл€ 60 ћ√ц = 16.666667 нс (было 40.0)
         .CLK_FEEDBACK("1X")       // ќбратна€ св€зь по CLK0 (60 ћ√ц)
     ) dcm_inst (
         .CLKIN(clk_60_ibufg), .CLKFB(clk_fb), .RST(1'b0),
