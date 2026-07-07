@@ -1,6 +1,4 @@
 InputFile = d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/xie1.ini
-The existing ucf file 'd:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/ver1/rev1/msb_main.ucf' has been overwritten by 'd:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.ucf'
-The old version of the file has been backed up as 'd:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/ver1/rev1/msb_main_backup0.ucf'
 Executing "C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\ngdbuild.exe" -p 6SLX4TQG144-3   -sd "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis" -sd "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\compile" -sd "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src" -uc "msb_main.ucf" "msb_main.ngc" "msb_main.ngd"
 Release 14.7 - ngdbuild P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
@@ -48,7 +46,7 @@ NGDBUILD Design Results Summary:
   Number of warnings:   0
 
 Writing NGD file "msb_main.ngd" ...
-Total REAL time to NGDBUILD completion:  1 sec
+Total REAL time to NGDBUILD completion:  2 sec
 Total CPU time to NGDBUILD completion:   1 sec
 
 Writing NGDBUILD log file "msb_main.bld"...
@@ -66,7 +64,7 @@ Updating timing models...
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 1 secs 
+Total REAL time at the beginning of Placer: 2 secs 
 Total CPU  time at the beginning of Placer: 1 secs 
 
 Phase 1.1  Initial Placement Analysis
@@ -81,29 +79,27 @@ Phase 3.31  Local Placement Optimization (Checksum:dea6195b) REAL time: 2 secs
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:d6a6fc12) REAL time: 2 secs 
+(Checksum:d6a6fc12) REAL time: 3 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 2 secs 
+Phase 5.36  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 3 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:d6a6fc12) REAL time: 2 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:d6a6fc12) REAL time: 3 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 2 secs 
+Phase 7.3  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 3 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 2 secs 
+Phase 8.5  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 3 secs 
 
 Phase 9.8  Global Placement
 ....................
-....................
-.......
-......
-Phase 9.8  Global Placement (Checksum:8367ba7d) REAL time: 2 secs 
+.................................
+Phase 9.8  Global Placement (Checksum:8367ba7d) REAL time: 3 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:8367ba7d) REAL time: 2 secs 
+Phase 10.5  Local Placement Optimization (Checksum:8367ba7d) REAL time: 3 secs 
 
 Phase 11.18  Placement Optimization
 Phase 11.18  Placement Optimization (Checksum:787ee59d) REAL time: 3 secs 
@@ -196,8 +192,8 @@ Specific Feature Utilization:
 
 Average Fanout of Non-Clock Nets:                3.54
 
-Peak Memory Usage:  4498 MB
-Total REAL time to MAP completion:  3 secs 
+Peak Memory Usage:  4518 MB
+Total REAL time to MAP completion:  4 secs 
 Total CPU time to MAP completion:   3 secs 
 
 Mapping completed.
@@ -244,7 +240,7 @@ Design statistics:
    Minimum period:   8.000ns (Maximum frequency: 125.000MHz)
 
 
-Analysis completed Mon Jul 06 17:29:19 2026
+Analysis completed Tue Jul 07 17:44:35 2026
 --------------------------------------------------------------------------------
 
 Generating Report ...
@@ -449,7 +445,7 @@ All signals are completely routed.
 Total REAL time to PAR completion: 2 secs 
 Total CPU time to PAR completion: 2 secs 
 
-Peak Memory Usage:  4459 MB
+Peak Memory Usage:  4458 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
@@ -504,7 +500,7 @@ Design statistics:
    Minimum period:   8.000ns (Maximum frequency: 125.000MHz)
 
 
-Analysis completed Mon Jul 06 17:29:25 2026
+Analysis completed Tue Jul 07 17:44:41 2026
 --------------------------------------------------------------------------------
 
 Generating Report ...

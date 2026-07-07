@@ -1,76 +1,73 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: Senior Embedded Systems & FPGA Architect
-// 
 // Module Name: spi_stm32_multi_word_bridge
-// Description: Multi-word burst SPI bridge for STM32 (Mode 0, max 20 MHz).
-//              Supports up to 16-word transfers. Fully synchronous to 100 MHz.
-//              Implements zero-latency look-ahead address and length decoding.
-//
+// Description: Multi-word burst SPI bridge for STM32.
+//              Optimized with Strict NSS Edge Detection.
 //////////////////////////////////////////////////////////////////////////////////
 
 module spi_stm32_multi_word_bridge #(
-    parameter NUM_WORDS = 16 // Support up to 16 words (parameterizable)
+    parameter NUM_WORDS = 16 
 )(
-    input  wire                         clk,       // System clock (100 MHz)
-    input  wire                         rst,       // Synchronous reset active high
+    input  wire                               clk,       
+    input  wire                               rst,       
     
-    // --- SPI Interface (Mode 0) ---
-    input  wire                         spi_in,    // MOSI
-    input  wire                         sck_in,    // SCK
-    input  wire                         nss_in,    // CS (Active Low)
-    output reg                          spi_out,   // MISO
+    // --- SPI Interface ---
+    input  wire                               spi_in,    
+    input  wire                               sck_in,    
+    input  wire                               nss_in,    
+    output reg                                spi_out,   
     
-    // --- Flat Local Bus Interfaces ---
-    // Word 0 is mapped to din[15:0], Word 1 to din[31:16], etc.
-    output reg  [(16*NUM_WORDS)-1:0]    dout,      // Flat write bus to FPGA
-    input  wire [(16*NUM_WORDS)-1:0]    din,       // Flat read bus from FPGA
-    output reg                          wr_strobe, // Write pulse (1 clk wide)
-    output reg                          rd_strobe, // Read pulse (1 clk wide)
-    output wire                         busy       // Bridge status active high
+    // --- Flat Local Bus ---
+    output reg  [(16*NUM_WORDS)-1:0]          dout,      
+    input  wire [(16*NUM_WORDS)-1:0]          din,       
+    output reg                                wr_strobe, 
+    output reg                                rd_strobe, 
+    output wire                               busy       
 );
 
-    // --- Input Synchronizers ---
+    // --- Synchronizers & Edge Detectors ---
     reg [2:0] sck_sync;
-    reg [1:0] nss_sync;
+    reg [2:0] nss_sync; // Increased to 3 bits for higher reliability
     reg [1:0] mosi_sync;
 
     always @(posedge clk) begin
         if (rst) begin
             sck_sync  <= 3'b000;
-            nss_sync  <= 2'b11;
+            nss_sync  <= 3'b111;
             mosi_sync <= 2'b00;
         end else begin
             sck_sync  <= {sck_sync[1:0], sck_in};
-            nss_sync  <= {nss_sync[0],   nss_in};
+            nss_sync  <= {nss_sync[1:0], nss_in};
             mosi_sync <= {mosi_sync[0],  spi_in};
         end
     end
 
-    // --- Edge Detectors ---
     wire sck_rising  = (sck_sync[1:0] == 2'b01);
     wire sck_falling = (sck_sync[1:0] == 2'b10);
+    
     wire nss_active  = ~nss_sync[1];
+    wire nss_falling = (nss_sync[1:0] == 2'b10); // CS Low (Start of Transfer)
+    wire nss_rising  = (nss_sync[1:0] == 2'b01); // CS High (End of Transfer)
 
     assign busy = nss_active;
 
-    // --- Control and Shift Registers ---
-    reg [8:0]                  bit_cnt;          // Up to 272 bits (16 + 16*16)
-    reg [(16*NUM_WORDS)-1:0]   rx_shifter_burst; // MOSI shift register
-    reg [(16*NUM_WORDS)-1:0]   tx_shifter_burst; // MISO shift register
-    reg [4:0]                  burst_len;        // Number of words to transfer
+    // --- Control Logic ---
+    reg [8:0]                  bit_cnt;
+    reg [15:0]                 rx_word_shifter;
+    reg [(16*NUM_WORDS)-1:0]   rx_burst_buffer;
+    reg [(16*NUM_WORDS)-1:0]   tx_shifter_burst;
+    reg [4:0]                  burst_len;
     reg                        is_write;
     reg                        is_read;
+    reg [4:0]                  word_idx;
 
-    // Local variable for loops (Verilog-2001 compatible)
     integer w;
 
-    // --- Main State Machine & Data Path ---
     always @(posedge clk) begin
         if (rst) begin
             bit_cnt          <= 9'd0;
-            rx_shifter_burst <= 0;
+            rx_word_shifter  <= 16'd0;
+            rx_burst_buffer  <= 0;
             tx_shifter_burst <= 0;
             dout             <= 0;
             wr_strobe        <= 1'b0;
@@ -78,86 +75,66 @@ module spi_stm32_multi_word_bridge #(
             is_write         <= 1'b0;
             is_read          <= 1'b0;
             burst_len        <= 5'd0;
-            spi_out          <= 1'b0;
-        end else if (!nss_active) begin
-            bit_cnt          <= 9'd0;
-            rx_shifter_burst <= 0;
-            tx_shifter_burst <= 0;
-            wr_strobe        <= 1'b0;
-            rd_strobe        <= 1'b0;
-            is_write         <= 1'b0;
-            is_read          <= 1'b0;
-            burst_len        <= 5'd0;
+            word_idx         <= 5'd0;
             spi_out          <= 1'b0;
         end else begin
+            // Default strobe values (guarantees exactly 1 clock cycle pulse)
             wr_strobe <= 1'b0;
             rd_strobe <= 1'b0;
 
-            // --- MOSI Path (Sampling on SCK Rising Edge) ---
-            if (sck_rising) begin
-                // Safety guard to prevent bit counter overflow
-                if (bit_cnt < (16 + (NUM_WORDS << 4))) begin
-                    bit_cnt          <= bit_cnt + 1'b1;
-                    rx_shifter_burst <= {rx_shifter_burst[(16*NUM_WORDS)-2 : 0], mosi_sync[1]};
+            // --- 1. START TRANSACTION (Reset internal state) ---
+            if (nss_falling) begin
+                bit_cnt         <= 9'd0;
+                rx_word_shifter <= 16'd0;
+                word_idx        <= 5'd0;
+                spi_out         <= 1'b0;
+            end
+
+            // --- 2. ACTIVE TRANSFER (Shifting data) ---
+            if (nss_active) begin
+                
+                // MOSI: Sample on Rising Edge
+                if (sck_rising) begin
+                    if (bit_cnt < (16 + (NUM_WORDS << 4))) bit_cnt <= bit_cnt + 1'b1;
+                    
+                    rx_word_shifter <= {rx_word_shifter[14:0], mosi_sync[1]};
+
+                    if (bit_cnt == 9'd15) begin
+                        is_write  <= rx_word_shifter[14];
+                        is_read   <= (!rx_word_shifter[14]) || rx_word_shifter[13];
+                        burst_len <= (rx_word_shifter[3:0] == 4'd0 && mosi_sync[1] == 1'b0) ? 5'd1 : {rx_word_shifter[3:0], mosi_sync[1]};
+                        
+                        if ((!rx_word_shifter[14]) || rx_word_shifter[13]) rd_strobe <= 1'b1;
+                    end
+                    else if (bit_cnt > 9'd15 && (bit_cnt[3:0] == 4'd15) && word_idx < NUM_WORDS) begin
+                        rx_burst_buffer[word_idx*16 +: 16] <= {rx_word_shifter[14:0], mosi_sync[1]};
+                        word_idx <= word_idx + 1'b1;
+                    end
                 end
 
-                // --- Header Word Fully Received (16th rising edge) ---
-                if (bit_cnt == 9'd15) begin
-                    // Decode Command Type (b15..b14)
-                    // 2'b00 = Read, 2'b10 = Write, 2'b11 = Read/Write
-                    is_write  <= rx_shifter_burst[14]; // Bit 15 is at [14]
-                    is_read   <= (!rx_shifter_burst[14]) || rx_shifter_burst[13]; // Bit 14 is at [13]
+                // Latch requested data from FPGA internal bus
+                if (rd_strobe) begin
+                    for (w = 0; w < NUM_WORDS; w = w + 1)
+                        tx_shifter_burst[(NUM_WORDS-w)*16 - 1 -: 16] <= din[w*16 +: 16];
+                end
 
-                    // Decode and sanitize Burst Length (b4..b0)
-                    if (rx_shifter_burst[3:0] == 4'd0 && mosi_sync[1] == 1'b0) begin
-                        burst_len <= 5'd1; // Default to 1 word if length is 0
-                    end else begin
-                        burst_len <= {rx_shifter_burst[3:0], mosi_sync[1]};
-                    end
-
-                    // Trigger read strobe immediately if read operation is required
-                    if ((!rx_shifter_burst[14]) || rx_shifter_burst[13]) begin
-                        rd_strobe <= 1'b1;
-                    end
+                // MISO: Shift out on Falling Edge (Setup for STM32 Rising Edge sample)
+                if (sck_falling && bit_cnt >= 9'd16 && is_read) begin
+                    spi_out          <= tx_shifter_burst[(16*NUM_WORDS)-1];
+                    tx_shifter_burst <= {tx_shifter_burst[(16*NUM_WORDS)-2 : 0], 1'b0};
                 end
             end
 
-            // --- Latch Read Data from FPGA ---
-            // Triggered on the clock cycle following 'rd_strobe'
-            if (rd_strobe) begin
-                // Map flat din [Word0, Word1, ... WordN] into tx_shifter_burst
-                // Word 0 is loaded at the MSB of shifter to be sent first
-                for (w = 0; w < NUM_WORDS; w = w + 1) begin
-                    tx_shifter_burst[(NUM_WORDS-w)*16 - 1 -: 16] <= din[w*16 +: 16];
+            // --- 3. END OF TRANSACTION (Atomic Write Execution) ---
+            if (nss_rising) begin
+                // Check if it was a Write and if we received the expected amount of bits
+                if (is_write && (bit_cnt >= {4'd0, burst_len, 4'd0} + 9'd16)) begin
+                    dout      <= rx_burst_buffer;
+                    wr_strobe <= 1'b1; // This strobe will now safely fire exactly once
                 end
+                spi_out <= 1'b0; // Drive MISO to 0 for bus safety when idle
             end
-
-            // --- MISO Path (Shifting out on SCK Falling Edge) ---
-            if (sck_falling) begin
-                if (bit_cnt >= 9'd16) begin
-                    if (is_read) begin
-                        spi_out          <= tx_shifter_burst[(16*NUM_WORDS)-1];
-                        tx_shifter_burst <= {tx_shifter_burst[(16*NUM_WORDS)-2 : 0], 1'b0};
-                    end else begin
-                        spi_out          <= 1'b0;
-                    end
-                end
-            end
-
-            // --- Write Execution (End of whole multi-word transfer) ---
-            // Triggered 1 cycle after the last bit is shifted in
-            if (nss_active && (bit_cnt == {4'd0, burst_len, 4'd0} + 9'd16) && !sck_rising && (wr_strobe == 1'b0)) begin
-                if (is_write) begin
-                    // Demultiplex rx_shifter_burst back to flat dout bus
-                    for (w = 0; w < NUM_WORDS; w = w + 1) begin
-                        if (w < burst_len) begin
-                            dout[w*16 +: 16] <= rx_shifter_burst[(burst_len-w)*16 - 1 -: 16];
-                        end
-                    end
-                    wr_strobe <= 1'b1;
-                end
-            end
+            
         end
     end
-
 endmodule
