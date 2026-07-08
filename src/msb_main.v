@@ -54,7 +54,7 @@ module msb_main (
     output wire                         RFU5,             // Bit 7: Reserved for Future Use 5
 	
     // --- External Test Points (Diagnostic Interface) ---
-    output wire [7:5]                   tp,              // TP[7:5] mapped to P81, P80, P79
+    output wire [7:5]                   tp,              // TP[7:5] mapped to P79, P80, P81
 
     // --- User Status LEDs ---
     output wire [2:0]                   led              // Status LEDs

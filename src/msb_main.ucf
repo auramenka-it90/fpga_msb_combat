@@ -86,6 +86,6 @@ NET "led[2]"               LOC = "P29"  | IOSTANDARD = LVCMOS33; # VD37 (Red)
 
 # --- Diagnostic Test Points (TP[7:5]) ---
 # FIXED: Reordered to match the physical assignments in msb_main.v
-NET "tp[5]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
+NET "tp[5]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
 NET "tp[6]"                LOC = "P80"  | IOSTANDARD = LVCMOS33; # TP6 on P80 (1 kHz Reference Clock)
-NET "tp[7]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)
+NET "tp[7]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)
