@@ -1,34 +1,49 @@
-
 `include "define.v"
+`timescale 1ns / 1ps
+
+// =============================================================================
+// MODULE: interrupt_controller (Device ID = 3)
+// 
+// DESCRIPTION:
+//  Universal Hardware Interrupt Controller with Write-1-to-Clear (W1C) logic.
+//  - 3-Stage Metastability Synchronizer on raw interrupt lines.
+//  - Configurable Edge Detectors (Rising or Falling edge per line).
+//  - Hardware Masking: Reading PENDING register automatically applies MASK.
+//  - Active-Low Output 'irq_out_N' (P51) driven to '0' while IRQ is active and enabled.
+//
+//  Target Silicon: Xilinx Spartan-6 (XC6SLX4 / XC6SLX9-TQG144)
+//  Toolchain:      Aldec Active-HDL 9.2 / ISE 14.7 / XST
+//  All comments in pure ASCII English.
+// =============================================================================
 
 module interrupt_controller #(
-    parameter ADR_WIDTH = 6,
-    parameter IRQ_LINES = 16 // Default number of interrupt lines
+    parameter ADR_WIDTH = `_D_S_CHIP_ADDR_WIDTH_, // 6 bits
+    parameter IRQ_LINES = 1                      // 1 active line for MSB (100 Hz timer strobe)
 )(
     // --- System Signals ---
     input  wire                 clk,         // System clock (100 MHz)
     input  wire                 rst,         // Synchronous reset (Active-High)
 
-    // --- CPU Bus Interface (FSMC) ---
-    input  wire [ADR_WIDTH-1:0] cpu_addr,    // Register address
+    // --- CPU Polling SPI Bus Interface ---
+    input  wire [ADR_WIDTH-1:0] cpu_addr,    // Register address offset
     input  wire [15:0]          cpu_di,      // Data from STM32 to FPGA
     input  wire                 cpu_wr,      // Write strobe (Active-High)
     input  wire                 cpu_rd,      // Read strobe (Active-High)
     output wire [15:0]          cpu_do,      // Data from FPGA to STM32
 
     // --- Hardware Interrupt Lines ---
-    input  wire [IRQ_LINES-1:0] irq_inputs,  // Raw signals from internal FPGA blocks
-    output wire                 irq_out_N    // Global interrupt signal for STM32 (Active-Low)
+    input  wire [IRQ_LINES-1:0] irq_inputs,  // Raw event strobe from internal timer
+    output wire                 irq_out_N    // Global active-low interrupt to STM32 PC3
 );
 
     // =========================================================================
-    // 1. REGISTER MAP
+    // 1. REGISTER ADDRESS MAP
     // =========================================================================
-    localparam BASE_ADDR      = 6'h00;
-    localparam P_OFF_PENDING  = 0; // [RW] Pending interrupts. Clear by writing 1 (W1C).
-    localparam P_OFF_MASK     = 1; // [RW] Mask. 1 = Interrupt enabled, 0 = Disabled.
-    localparam P_OFF_EDGE_SEL = 2; // [RW] Edge Select. 0 = Rising edge, 1 = Falling edge.
-    localparam P_OFF_CTRL     = 3; // [RW] Control. Bit 0: Global interrupt enable.
+    localparam BASE_ADDR      = {ADR_WIDTH{1'b0}};
+    localparam P_OFF_PENDING  = 6'd0; // [R] Masked Pending / [W1C] Clear Pending
+    localparam P_OFF_MASK     = 6'd1; // [RW] Mask (1 = Enabled, 0 = Disabled)
+    localparam P_OFF_EDGE_SEL = 6'd2; // [RW] Edge Select (0 = Rising, 1 = Falling)
+    localparam P_OFF_CTRL     = 6'd3; // [RW] Control (Bit 0 = Global Interrupt Enable)
 
     // Internal state registers
     reg [IRQ_LINES-1:0] pending_reg;
@@ -37,9 +52,8 @@ module interrupt_controller #(
     reg [15:0]          ctrl_reg;
 
     // =========================================================================
-    // 2. SYNCHRONIZERS & EDGE DETECTORS
+    // 2. SYNCHRONIZERS & EDGE DETECTORS (3-Stage Shift Register)
     // =========================================================================
-    // Three-stage shift register for metastability protection of asynchronous signals
     reg [IRQ_LINES-1:0] sync1_reg, sync2_reg, sync3_reg;
 
     always @(posedge clk) begin
@@ -54,27 +68,25 @@ module interrupt_controller #(
         end
     end
 
-    // Edge detectors (generates a pulse exactly 1 clock cycle wide)
+    // Edge detectors: Generates a single clock cycle pulse on selected edge
     wire [IRQ_LINES-1:0] irq_events;
     genvar i;
     generate
         for (i = 0; i < IRQ_LINES; i = i + 1) begin : edge_detectors
             assign irq_events[i] = edge_sel_reg[i] ? 
-                                   (sync3_reg[i] & ~sync2_reg[i]) : 
-                                   (~sync3_reg[i] & sync2_reg[i]);
+                                   (sync3_reg[i] & ~sync2_reg[i]) : // Falling edge
+                                   (~sync3_reg[i] & sync2_reg[i]);  // Rising edge
         end
     endgenerate
 
     // =========================================================================
-    // 3. BUS INTERFACE DECODING (Symmetrical RTL Design)
+    // 3. BUS INTERFACE DECODING
     // =========================================================================
-    // WRITE access flags
     wire wr_pending  = (cpu_addr == (BASE_ADDR + P_OFF_PENDING))  && cpu_wr;
     wire wr_mask     = (cpu_addr == (BASE_ADDR + P_OFF_MASK))     && cpu_wr;
     wire wr_edge_sel = (cpu_addr == (BASE_ADDR + P_OFF_EDGE_SEL)) && cpu_wr;
     wire wr_ctrl     = (cpu_addr == (BASE_ADDR + P_OFF_CTRL))     && cpu_wr;
 
-    // READ access flags
     wire rd_pending  = (cpu_addr == (BASE_ADDR + P_OFF_PENDING))  && cpu_rd;
     wire rd_mask     = (cpu_addr == (BASE_ADDR + P_OFF_MASK))     && cpu_rd;
     wire rd_edge_sel = (cpu_addr == (BASE_ADDR + P_OFF_EDGE_SEL)) && cpu_rd;
@@ -91,14 +103,14 @@ module interrupt_controller #(
             ctrl_reg     <= 16'h0000; 
         end else begin
             
-            // --- Write-1-to-Clear (W1C) IMPLEMENTATION ---
+            // --- Write-1-to-Clear (W1C) Execution ---
             if (wr_pending) begin
                 pending_reg <= (pending_reg & ~cpu_di[IRQ_LINES-1:0]) | irq_events;
             end else begin
                 pending_reg <= pending_reg | irq_events;
             end
 
-            // Update configuration registers
+            // Configuration writes
             if (wr_mask)     mask_reg     <= cpu_di[IRQ_LINES-1:0];
             if (wr_edge_sel) edge_sel_reg <= cpu_di[IRQ_LINES-1:0];
             if (wr_ctrl)     ctrl_reg     <= cpu_di;
@@ -106,56 +118,20 @@ module interrupt_controller #(
     end
 
     // =========================================================================
-    // 5. FSMC BUS READ LOGIC (Snapshot + Combinatorial Mux)
+    // 5. BUS READ MULTIPLEXER (Hardware Masking Applied Automatically)
     // =========================================================================  
-	/*
-    reg [IRQ_LINES-1:0] pending_frozen; 
-    reg                 rd_pending_q;   
-
-    // Synchronous Snapshot: Freeze pending_reg on the first read clock cycle
-    always @(posedge clk) begin
-        if (rst) begin
-            rd_pending_q   <= 1'b0;
-            pending_frozen <= {IRQ_LINES{1'b0}};
-        end else begin
-            if (rd_pending && !rd_pending_q) begin
-                pending_frozen <= pending_reg;
-            end
-            rd_pending_q <= rd_pending; 
-        end
-    end
-	
-	
-    // Combinatorial Output Mux
-    assign cpu_do = rd_pending  ? { {(16-IRQ_LINES){1'b0}}, pending_frozen } :
-                    rd_mask     ? { {(16-IRQ_LINES){1'b0}}, mask_reg }       :
-                    rd_edge_sel ? { {(16-IRQ_LINES){1'b0}}, edge_sel_reg }   :
-                    rd_ctrl     ? ctrl_reg                                   :
+    assign cpu_do = rd_pending  ? { {(16-IRQ_LINES){1'b0}}, (pending_reg & mask_reg) } :
+                    rd_mask     ? { {(16-IRQ_LINES){1'b0}}, mask_reg }                 :
+                    rd_edge_sel ? { {(16-IRQ_LINES){1'b0}}, edge_sel_reg }             :
+                    rd_ctrl     ? ctrl_reg                                             :
                     16'h0000;
-	*/
-	/*
-	 assign cpu_do = rd_pending  ? { {(16-IRQ_LINES){1'b0}}, pending_reg } 	  :
-                     rd_mask     ? { {(16-IRQ_LINES){1'b0}}, mask_reg }       :
-                     rd_edge_sel ? { {(16-IRQ_LINES){1'b0}}, edge_sel_reg }   :
-                     rd_ctrl     ? ctrl_reg                                   :
-                    16'h0000;		 
-	*/				
-	// Combinatorial Output Mux: Ïðè ÷òåíèè ADDR_IC_PENDING íàêëàäûâàåì ìàñêó àïïàðàòíî
-    assign cpu_do = rd_pending  ? { {(16-IRQ_LINES){1'b0}}, (pending_reg & mask_reg) } : // <-- ÈÑÏÐÀÂËÅÍÈÅ ÇÄÅÑÜ
-                    rd_mask     ? { {(16-IRQ_LINES){1'b0}}, mask_reg }        :
-                    rd_edge_sel ? { {(16-IRQ_LINES){1'b0}}, edge_sel_reg }    :
-                    rd_ctrl     ? ctrl_reg                                    :
-                    16'h0000;				
+
     // =========================================================================
-    // 6. PHYSICAL OUTPUT (Direct logic without stretcher)
+    // 6. PHYSICAL INTERRUPT OUTPUT (Active-Low)
+    // Line goes Low ('0') if unmasked IRQ is active AND Global Enable is ON (ctrl_reg[0])
     // =========================================================================
-    
-    // Interrupt is considered active if there is at least one flag enabled by the mask
     wire interrupt_active = |(pending_reg & mask_reg);
 
-    // Physical pin irq_out_N is active-low (pulled to ground).
-    // Line goes to '0' in hardware and stays there until STM32 clears flags (W1C).
-    // Works only if the Global Enable bit is set (ctrl_reg[0]).
     assign irq_out_N = (ctrl_reg[0] && interrupt_active) ? 1'b0 : 1'b1;
 
 endmodule

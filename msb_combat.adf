@@ -35,7 +35,7 @@ REFRESH_FLOW=1
 FAMILY=Xilinx14x SPARTAN6
 RUN_MODE_SYNTH=0
 WireDelay=2
-fileopenfolder=D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\modules
+fileopenfolder=D:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\Coregen
 SYNTH_STATUS=warnings
 FUNC_LIB=msb_combat
 PHYSSYNTH_STATUS=none
@@ -78,7 +78,7 @@ FAMILY=Xilinx14x SPARTAN6
 DEVICE=6slx4tqg144
 SPEED=-3
 NETLIST=synthesis\msb_main.ngc
-LAST_RUN=1783435463
+LAST_RUN=1788065767
 OUTPUT_NETLIST=IMPLEMENT\TIME_SIM.V
 OUTPUT_SDF=
 IS_BAT_MODE=0
@@ -106,7 +106,7 @@ impl_opt(dont_run_bitgen)=0
 impl_opt(use_partitions_in_flow)=0
 impl_opt(partitions_file)=synthesis\xpartition.pxml
 impl_opt(ChipScope_Core_Inserter_Project_File)=synthesis\msb_main.cdc
-Macro_Search_Path=
+Macro_Search_Path={src\Coregen}
 impl_opt(use_partitions_file)=0
 impl_opt(smart_guide_file)=implement\ver1\rev1\msb_main_guide.ncd
 impl_opt(use_smart_guide)=0
@@ -290,6 +290,7 @@ impl_opt(Power_Reduction_Map_Virtex6)=Off
 impl_opt(Register_Ordering)=4
 impl_opt(essential_bits)=0
 impl_opt(multiboot_insert_iprog_cmd_in_the_bitfile)=Enable
+impl_opt(Macro_Search_Path)=d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/xilinxcoregen
 
 [HierarchyViewer]
 SortInfo=u
@@ -387,7 +388,7 @@ JOB_DESCRIPTION=SynthesisTask
 SERVERFARM_INCLUDE_INPUT_FILES=*.*
 SERVERFARM_EXCLUDE_INPUT_FILES=log*.*:implement*.*
 JOB_SFM_RESOURCE=
-LAST_RUN=1783347990
+LAST_RUN=1787919606
 OUTPUT_NETLIST=synthesis\msb_main.ngc
 OUTPUT_SIMUL_NETLIST=synthesis\msb_main.v
 
@@ -407,10 +408,6 @@ TOPLEVEL=msb_main glbl
 [DefineMacro]
 Global=
 
-[Groups]
-stm32_2_fpga_spi_bridge=1
-modules=1
-
 [SIM.TIME]
 SDF_PATH=
 TOPLEVEL=
@@ -419,6 +416,28 @@ TOPLEVEL=
 SPARTAN6=
 unisims_ver=
 
+[Folders]
+Name3=Makefiles
+Directory3=d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\
+Extension3=mak
+Name4=Memory
+Directory4=d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\
+Extension4=mem;mif;hex
+Name5=Dll Libraries
+Directory5=d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\
+Extension5=dll
+Name6=PDF
+Directory6=d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\
+Extension6=pdf
+Name7=HTML
+Directory7=d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\
+Extension7=
+
+[Groups]
+stm32_2_fpga_spi_bridge=1
+modules=1
+Coregen=1
+
 [Files]
 /define.v=-1
 /msb_main.ucf=-1
@@ -426,11 +445,14 @@ unisims_ver=
 /system_clk_rst.v=-1
 /programmable_tick_divider.v=-1
 /debounce_filter .v=-1
+/multiboot_icap.v=-1
 stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v=-1
 stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v=-1
 modules/fcs_module .v=-1
 modules/debug_module.v=-1
 modules/interrupt_controller.v=-1
+Coregen/chipscope_icon.v=-1
+Coregen/chipscope_ila.v=-1
 
 [Files.Data]
 .\src\define.v=Verilog Source Code
@@ -439,9 +461,12 @@ modules/interrupt_controller.v=-1
 .\src\system_clk_rst.v=Verilog Source Code
 .\src\programmable_tick_divider.v=Verilog Source Code
 .\src\debounce_filter .v=Verilog Source Code
+.\src\multiboot_icap.v=Verilog Source Code
 .\src\stm32_2_fpga_spi_bridge\spi_stm32_fpga_bridge.v=Verilog Source Code
 .\src\stm32_2_fpga_spi_bridge\spi_stm32_multi_word_bridge.v=Verilog Source Code
 .\src\modules\fcs_module .v=Verilog Source Code
 .\src\modules\debug_module.v=Verilog Source Code
 .\src\modules\interrupt_controller.v=Verilog Source Code
+.\src\Coregen\chipscope_icon.v=Verilog Source Code
+.\src\Coregen\chipscope_ila.v=Verilog Source Code
 

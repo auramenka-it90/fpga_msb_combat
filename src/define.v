@@ -1,3 +1,6 @@
+`ifndef __DEFINE_V__
+`define __DEFINE_V__
+
 // =============================================================================
 // GLOBAL SYSTEM DEFINITIONS
 // =============================================================================
@@ -19,7 +22,16 @@
 `define     _D_S_CHIP_LO_           0
 
 // Number of active SPI modules & Device IDs
-`define     _D_S_NUM_OF_DEV_        3           // “≈œ≈–‹ “”“ 3 (·˚ÎÓ 2)
+`define     _D_S_NUM_OF_DEV_        3           // 3 Active Devices
 `define     _D_S_DEBUG_ID_          1           // ID 1: SPI Debug Module
 `define     _D_S_FCS_ID_            2           // ID 2: SPI Fire Control System Module (FCS)
-`define     _D_S_INT_CTRL_ID_       3           // ID 3: SPI Interrupt Controller (ÕÓ‚˚È!)
+`define     _D_S_INT_CTRL_ID_       3           // ID 3: SPI Interrupt Controller
+
+// =============================================================================
+// DEBUG & CHIPSCOPE CONFIGURATION
+// =============================================================================
+// Uncomment to include ChipScope Pro Logic Analyzer (ICON + ILA) for hardware debug.
+// Comment out for release build to free up Block RAM (BRAM) and logic resources.
+`define     USE_CHIPSCOPE
+
+`endif // __DEFINE_V__

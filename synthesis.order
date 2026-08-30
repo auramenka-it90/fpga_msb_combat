@@ -8,3 +8,6 @@ i<>.\src\modules\debug_module.v
 i<>.\src\debounce_filter .v
 i<>.\src\modules\fcs_module .v
 i<>.\src\modules\interrupt_controller.v
+i<>.\src\multiboot_icap.v
+i<>.\src\Coregen\chipscope_icon.v
+i<>.\src\Coregen\chipscope_ila.v

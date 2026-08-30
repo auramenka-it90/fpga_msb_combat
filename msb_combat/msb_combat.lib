@@ -1,8 +1,20 @@
-timestamp=1783435455370
+timestamp=1788065761942
 
 [$root]
-A/$root=22|""|0|1*1552929
-BinI32/$root=3*989663
+A/$root=22|""|0|1*3093970
+BinI32/$root=3*2079545
+Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
+
+[chipscope_icon]
+A/chipscope_icon=22|./../src/Coregen/chipscope_icon.v|21|1*3160644
+BinI32/chipscope_icon=3*2121537
+R=./../src/Coregen/chipscope_icon.v|21
+Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
+
+[chipscope_ila]
+A/chipscope_ila=22|./../src/Coregen/chipscope_ila.v|21|1*3161482
+BinI32/chipscope_ila=3*2121685
+R=./../src/Coregen/chipscope_ila.v|21
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [clk_25_100_mHz]
@@ -12,89 +24,101 @@ R=./../src/clk_25_100_mHz.v|68
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [debounce_filter]
-A/debounce_filter=22|./../src/debounce_filter .v|10|1*1601312
-BinI32/debounce_filter=3*1020450
+A/debounce_filter=22|./../src/debounce_filter .v|10|1*3162604
+BinI32/debounce_filter=3*2121832
 R=./../src/debounce_filter .v|10
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [debug_module]
-A/debug_module=22|./../src/modules/debug_module.v|4|1*1575906
-BinI32/debug_module=3*997155
-R=./../src/modules/debug_module.v|4
+A/debug_module=22|./../src/modules/debug_module.v|14|1*3127721
+BinI32/debug_module=3*2090098
+R=./../src/modules/debug_module.v|14
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [fcs_module]
-A/fcs_module=22|./../src/modules/fcs_module .v|113|1*1580079
-BinI32/fcs_module=3*1002911
-R=./../src/modules/fcs_module .v|113
+A/fcs_module=22|./../src/modules/fcs_module .v|107|1*3138454
+BinI32/fcs_module=3*2098176
+R=./../src/modules/fcs_module .v|107
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [interrupt_controller]
-A/interrupt_controller=22|./../src/modules/interrupt_controller.v|4|1*1594784
-BinI32/interrupt_controller=3*1011589
-R=./../src/modules/interrupt_controller.v|4
+A/interrupt_controller=22|./../src/modules/interrupt_controller.v|19|1*3154060
+BinI32/interrupt_controller=3*2112665
+R=./../src/modules/interrupt_controller.v|19
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [msb_main]
-A/msb_main=22|./../src/msb_main.v|4|1*1553335
-BinI32/msb_main=3*989802
-R=./../src/msb_main.v|4
+A/msb_main=22|./../src/msb_main.v|24|1*3094376
+BinI32/msb_main=3*2079684
+R=./../src/msb_main.v|24
+Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
+
+[multiboot_icap]
+A/multiboot_icap=22|./../src/multiboot_icap.v|20|1*3133475
+BinI32/multiboot_icap=3*2094624
+R=./../src/multiboot_icap.v|20
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [programmable_tick_divider]
-A/programmable_tick_divider=22|./../src/programmable_tick_divider.v|4|1*1592919
-BinI32/programmable_tick_divider=3*1010637
-R=./../src/programmable_tick_divider.v|4
+A/programmable_tick_divider=22|./../src/programmable_tick_divider.v|22|1*3152187
+BinI32/programmable_tick_divider=3*2111711
+R=./../src/programmable_tick_divider.v|22
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [spi_stm32_fpga_bridge]
-A/spi_stm32_fpga_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v|9|1*1571780
-BinI32/spi_stm32_fpga_bridge=3*995296
+A/spi_stm32_fpga_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v|9|1*3123595
+BinI32/spi_stm32_fpga_bridge=3*2088243
 R=./../src/stm32_2_fpga_spi_bridge/spi_stm32_fpga_bridge.v|9
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [spi_stm32_multi_word_bridge]
-A/spi_stm32_multi_word_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v|8|1*1603200
-BinI32/spi_stm32_multi_word_bridge=3*1021368
+A/spi_stm32_multi_word_bridge=22|./../src/stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v|8|1*3166033
+BinI32/spi_stm32_multi_word_bridge=3*2126043
 R=./../src/stm32_2_fpga_spi_bridge/spi_stm32_multi_word_bridge.v|8
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [system_clk_rst]
-A/system_clk_rst=22|./../src/system_clk_rst.v|3|1*1566712
-BinI32/system_clk_rst=3*992881
-R=./../src/system_clk_rst.v|3
+A/system_clk_rst=22|./../src/system_clk_rst.v|19|1*3117726
+BinI32/system_clk_rst=3*2085554
+R=./../src/system_clk_rst.v|19
 Version=9.2.2499.4581  (Windows)|0000002c789cd3cd51c82d4e8a4fcecf4d4a2c51d0f53752d0cd51080e700c0a71f43303b14bf3328b33738be3cb528b0036d80e54
 
 [~A]
 LastVerilogToplevel=spi_stm32_multi_word_bridge
-ModifyID=3825
+ModifyID=6397
 Version=73
+d:/Work_20XX/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_multiboot_icap.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_fcs_module .v_debug_module.v_interrupt_controller.v_chipscope_icon.v_chipscope_ila.v=0*1019935*1032830
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_clk_25_100_mHz.v=0*58117*59800
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v=0*61478*63017
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_clk_25_100_mHz.v=0*44855*47467
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v=0*82635*84730
+d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_multiboot_icap.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_fcs_module .v_debug_module.v_interrupt_controller.v=0*835961*848359
+d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_multiboot_icap.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_fcs_module .v_debug_module.v_interrupt_controller.v_chipscope_icon.v_chipscope_ila.v=0*996774*1009669
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_debug_module.v=0*185547*191794
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_fcs_module .v_debug_module.v=0*323494*331483
-d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_fcs_module .v_debug_module.v_interrupt_controller.v=0*544675*554079
+d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_debounce_filter .v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_fcs_module .v_debug_module.v_interrupt_controller.v=0*617279*627948
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v=0*88292*92473
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst.v_programmable_tick_divider.v_spi_stm32_fpga_bridge.v_spi_stm32_multi_word_bridge.v_debug_module.v=0*164278*169658
 d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/src/define.v_msb_main.v_system_clk_rst_old.v=0*7229*8724
 
 [~MFT]
-0=587|0msb_combat.mgf|554079|292334
-1=740|1msb_combat.mgf|1603200|1549280
-3=740|3msb_combat.mgf|1021368|989359
+0=923|0msb_combat.mgf|1032830|537752
+1=1245|1msb_combat.mgf|3166033|3090321
+3=1245|3msb_combat.mgf|2126043|2079241
 
 [~U]
-$root=12|0*537769|
+$root=12|0*1010715|
+chipscope_icon=12|0*1018303|
+chipscope_ila=12|0*1018470|
 clk_25_100_mHz=12|0*57806|
-debounce_filter=12|0*543782|
-debug_module=12|0*541057|
-fcs_module=12|0*541683|
-interrupt_controller=12|0*543059|
-msb_main=12|0*538063||0x10
-programmable_tick_divider=12|0*542745|
-spi_stm32_fpga_bridge=12|0*540509|
-spi_stm32_multi_word_bridge=12|0*544081||0x10
-system_clk_rst=12|0*539913|
+debounce_filter=12|0*1018700|
+debug_module=12|0*1014434|
+fcs_module=12|0*1015848|
+interrupt_controller=12|0*1017553|
+msb_main=12|0*1011041||0x10
+multiboot_icap=12|0*1015320|
+programmable_tick_divider=12|0*1017239|
+spi_stm32_fpga_bridge=12|0*1013886|
+spi_stm32_multi_word_bridge=12|0*1019341||0x10
+system_clk_rst=12|0*1013290|
 

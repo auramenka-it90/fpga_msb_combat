@@ -22,7 +22,7 @@ NET "spi_stm32_mosi"       LOC = "P64"  | IOSTANDARD = LVCMOS33; # MOSI (Flash D
 NET "spi_stm32_miso"       LOC = "P65"  | IOSTANDARD = LVCMOS33; # MISO (Flash DQ1 / FPGA_MISO2)
 
 # --- SPI Shared Clock Input (Jumper) ---
-NET "spi_stm32_sck"        LOC = "P70"  | IOSTANDARD = LVCMOS33; # SCK (misc1)				(only P70 !!!!!)
+NET "spi_stm32_sck"        LOC = "P47"  | IOSTANDARD = LVCMOS33; # SCK (misc1)
 NET "spi_stm32_sck"        CLOCK_DEDICATED_ROUTE = FALSE;
 
 # --- Global Hardware Interrupt to STM32 (Active Low) ---
@@ -80,32 +80,12 @@ NET "RFU5"                 LOC = "P23"  | IOSTANDARD = LVCMOS33; # Bit 7: Reserv
 NET "w25q128_nss"          LOC = "P38"  | IOSTANDARD = LVCMOS33; # Flash CS on Pin 38 (cso)
 
 # --- debug ---
-NET "led[0]"               LOC = "P26"  | IOSTANDARD = LVCMOS33; # VD35 (Green)
+NET "led[0]"               LOC = "P16"  | IOSTANDARD = LVCMOS33; # VD35 (Green)
 NET "led[1]"               LOC = "P27"  | IOSTANDARD = LVCMOS33; # VD36 (Yellow)
 NET "led[2]"               LOC = "P29"  | IOSTANDARD = LVCMOS33; # VD37 (Red)
-  
-# =============================================================================
-# STM32 <-> FPGA UART2 INTERFACE
-# =============================================================================
-NET "usart2_fpga_tx"       LOC = "P58"  | IOSTANDARD = LVCMOS33; # From STM32 PA2 (TX)
-NET "usart2_fpga_rx"       LOC = "P57"  | IOSTANDARD = LVCMOS33; # To STM32 PA3 (RX)
-
-# =============================================================================
-# RS-485 / RS-422 PORT 1 (Transceiver DD19)
-# =============================================================================
-NET "tx2"                  LOC = "P11"  | IOSTANDARD = LVCMOS33; # To DD19 DI
-NET "rx2"                  LOC = "P10"  | IOSTANDARD = LVCMOS33; # From DD19 RO
-NET "de2"                  LOC = "P12"  | IOSTANDARD = LVCMOS33; # To DD19 DE
-
-# =============================================================================
-# RS-485 / RS-422 PORT 2 (Transceiver DD20)
-# =============================================================================
-NET "tx3"                  LOC = "P15"  | IOSTANDARD = LVCMOS33; # To DD20 DI
-NET "rx3"                  LOC = "P14"  | IOSTANDARD = LVCMOS33; # From DD20 RO
-NET "de3"                  LOC = "P17"  | IOSTANDARD = LVCMOS33; # To DD20 DE
 
 # --- Diagnostic Test Points (TP[7:5]) ---
 # FIXED: Reordered to match the physical assignments in msb_main.v
-NET "tp[5]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
+NET "tp[5]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
 NET "tp[6]"                LOC = "P80"  | IOSTANDARD = LVCMOS33; # TP6 on P80 (1 kHz Reference Clock)
-NET "tp[7]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)
+NET "tp[7]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)

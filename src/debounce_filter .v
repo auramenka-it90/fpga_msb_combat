@@ -1,19 +1,30 @@
-
+ 
 `timescale 1ns / 1ps
 // =============================================================================
 // Module Name:    debounce_filter
-// Description:    Ultra-compact Metastability & Debounce Filter (3 ms).
-//                 Uses global 1 kHz (1 ms) tick to reduce counter size 
-//                 from 19-bit to 2-bit, saving massive FPGA resources.
+// Description:    Ultra-compact Metastability & Parameterized Debounce Filter.
+//                 Uses global 1 kHz (1 ms) tick and dynamic bit-width calculation
+//                 (f_clog2) to eliminate synthesis warnings (Xst:1710).
 // =============================================================================
 
-module debounce_filter (
+module debounce_filter #(
+    parameter DEBOUNCE_TICKS = 3  // Filter duration in 1ms ticks (Supported: 1 to 8)
+)(
     input  wire  clk,        // System Clock (100 MHz)
     input  wire  rst,        // Synchronous Reset active high
     input  wire  tick_1ms,   // Global 1 kHz clock enable tick from system_clk_rst
     input  wire  noisy_in,   // Raw asynchronous noisy input from PCB pad
     output reg   clean_out   // Synchronized and debounced stable output
 );
+
+    // --- Manual function for bit width calculation (ISE 14.7 fix) ---
+    function integer f_clog2;
+        input integer value;
+        begin
+            for (f_clog2 = 0; value > 0; f_clog2 = f_clog2 + 1)
+                value = value >> 1;
+        end
+    endfunction
 
     // =========================================================================
     // 1. METASTABILITY GUARD (2-Stage Flip-Flop Synchronizer)
@@ -32,26 +43,30 @@ module debounce_filter (
     wire synced_in = sync_reg[1];
 
     // =========================================================================
-    // 2. DEBOUNCE FILTER LOGIC (3 ms using 2-bit counter)
+    // 2. PARAMETERIZED DEBOUNCE FILTER LOGIC
     // =========================================================================
-    reg [1:0] debounce_cnt;
+    localparam integer CNT_LIMIT = (DEBOUNCE_TICKS > 1) ? (DEBOUNCE_TICKS - 1) : 0;
+    localparam integer CALC_BITS = f_clog2(CNT_LIMIT);
+    localparam integer CNT_WIDTH = (CALC_BITS > 0) ? CALC_BITS : 1;
+
+    reg [CNT_WIDTH-1:0] debounce_cnt;
 
     always @(posedge clk) begin
         if (rst) begin
-            debounce_cnt <= 2'd0;
+            debounce_cnt <= {CNT_WIDTH{1'b0}};
             clean_out    <= 1'b0;
         end else begin
             if (synced_in == clean_out) begin
                 // Input is stable and matches current output state, reset counter
-                debounce_cnt <= 2'd0;
+                debounce_cnt <= {CNT_WIDTH{1'b0}};
             end else if (tick_1ms) begin
                 // Input differs from output, increment counter on every 1 ms tick
-                if (debounce_cnt == 2'd2) begin
-                    // 3 ms threshold reached (0 -> 1 -> 2 -> Latch)
-                    clean_out    <= synced_in; // Latch the new stable state
-                    debounce_cnt <= 2'd0;
+                if (debounce_cnt >= CNT_LIMIT[CNT_WIDTH-1:0]) begin
+                    // Target threshold reached -> Latch the new stable state
+                    clean_out    <= synced_in;
+                    debounce_cnt <= {CNT_WIDTH{1'b0}};
                 end else begin
-                    debounce_cnt <= debounce_cnt + 2'd1;
+                    debounce_cnt <= debounce_cnt + 1'b1;
                 end
             end
         end
