@@ -1,11 +1,11 @@
 set -tmpdir .
-set -xsthdpdir "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst"
+set -xsthdpdir "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst"
 run
 -ifn msb_main.prj
 -ifmt mixed
 -ofn msb_main
 -ofmt NGC
--p xc6slx4tqg144-3
+-p xc6slx9tqg144-2
 -top msb_main
 -opt_mode speed
 -opt_level 1

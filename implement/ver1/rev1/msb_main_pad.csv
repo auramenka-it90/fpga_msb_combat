@@ -1,7 +1,7 @@
 #Release 14.7 - par P.20131013 (nt64)
 #Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-#Sun Aug 30 07:56:27 2026
+#Mon Sep 14 21:38:15 2026
 
 #
 ## NOTE: This file is designed to be imported into a spreadsheet program
@@ -11,8 +11,8 @@
 #
 #INPUT FILE:       map.ncd
 #OUTPUT FILE:      msb_main_pad.csv
-#PART TYPE:        xc6slx4
-#SPEED GRADE:      -3
+#PART TYPE:        xc6slx9
+#SPEED GRADE:      -2
 #PACKAGE:          tqg144
 #
 # Pinout by Pin Number:
