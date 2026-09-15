@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> Parameter xsthdpdir set to D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.07 secs
+Total CPU time to Xst completion: 0.12 secs
  
 --> 
 TABLE OF CONTENTS
@@ -178,18 +178,18 @@ Elaborating module <chipscope_ila>.
 
 Synthesizing Unit <msb_main>.
     Related source file is "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v".
-INFO:Xst:3210 - "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v" line 134: Output port <busy> of the instance <spi_bridge_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v" line 136: Output port <busy> of the instance <spi_bridge_inst> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_monitor_div2>.
     Found 11-bit register for signal <dr_sync2>.
     Found 11-bit register for signal <dr_sync1>.
-    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o> created at line 368.
-    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[9]_tp_signals[31]_Mux_31_o> created at line 369.
-    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[14]_tp_signals[31]_Mux_33_o> created at line 370.
-    Found 16-bit 4-to-1 multiplexer for signal <_n0129> created at line 130.
-    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 310
+    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o> created at line 373.
+    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[9]_tp_signals[31]_Mux_31_o> created at line 374.
+    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[14]_tp_signals[31]_Mux_33_o> created at line 375.
+    Found 16-bit 4-to-1 multiplexer for signal <_n0131> created at line 132.
+    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 312
     Summary:
 	inferred  23 D-type flip-flop(s).
-	inferred  16 Multiplexer(s).
+	inferred  18 Multiplexer(s).
 	inferred   1 Tristate(s).
 Unit <msb_main> synthesized.
 
@@ -369,8 +369,8 @@ Macro Statistics
  6-bit comparator greater                              : 1
  8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 114
- 1-bit 2-to-1 multiplexer                              : 71
+# Multiplexers                                         : 116
+ 1-bit 2-to-1 multiplexer                              : 73
  1-bit 24-to-1 multiplexer                             : 3
  16-bit 2-to-1 multiplexer                             : 17
  16-bit 4-to-1 multiplexer                             : 1
@@ -443,8 +443,8 @@ Macro Statistics
  6-bit comparator greater                              : 1
  8-bit comparator greater                              : 1
  8-bit comparator lessequal                            : 1
-# Multiplexers                                         : 132
- 1-bit 2-to-1 multiplexer                              : 114
+# Multiplexers                                         : 134
+ 1-bit 2-to-1 multiplexer                              : 116
  1-bit 24-to-1 multiplexer                             : 3
  16-bit 2-to-1 multiplexer                             : 13
  16-bit 4-to-1 multiplexer                             : 1
@@ -517,11 +517,11 @@ Top Level Output File Name         : msb_main.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 589
+# BELS                             : 590
 #      GND                         : 1
-#      INV                         : 17
+#      INV                         : 16
 #      LUT1                        : 23
-#      LUT2                        : 81
+#      LUT2                        : 83
 #      LUT3                        : 180
 #      LUT4                        : 60
 #      LUT5                        : 40
@@ -541,8 +541,8 @@ Primitive and Black Box Usage:
 #      FDSE                        : 15
 # Clock Buffers                    : 3
 #      BUFG                        : 3
-# IO Buffers                       : 62
-#      IBUF                        : 37
+# IO Buffers                       : 63
+#      IBUF                        : 38
 #      IBUFG                       : 1
 #      OBUF                        : 23
 #      OBUFT                       : 1
@@ -561,19 +561,19 @@ Selected Device : 6slx9tqg144-2
 
 Slice Logic Utilization: 
  Number of Slice Registers:             446  out of  11440     3%  
- Number of Slice LUTs:                  533  out of   5720     9%  
-    Number used as Logic:               533  out of   5720     9%  
+ Number of Slice LUTs:                  534  out of   5720     9%  
+    Number used as Logic:               534  out of   5720     9%  
 
 Slice Logic Distribution: 
- Number of LUT Flip Flop pairs used:    660
-   Number with an unused Flip Flop:     214  out of    660    32%  
-   Number with an unused LUT:           127  out of    660    19%  
-   Number of fully used LUT-FF pairs:   319  out of    660    48%  
+ Number of LUT Flip Flop pairs used:    661
+   Number with an unused Flip Flop:     215  out of    661    32%  
+   Number with an unused LUT:           127  out of    661    19%  
+   Number of fully used LUT-FF pairs:   319  out of    661    48%  
    Number of unique control sets:        44
 
 IO Utilization: 
- Number of IOs:                          62
- Number of bonded IOBs:                  62  out of    102    60%  
+ Number of IOs:                          63
+ Number of bonded IOBs:                  63  out of    102    61%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
@@ -614,8 +614,8 @@ Speed Grade: -2
 
    Minimum period: 10.135ns (Maximum Frequency: 98.668MHz)
    Minimum input arrival time before clock: 2.564ns
-   Maximum output required time after clock: 9.037ns
-   Maximum combinational path delay: 8.954ns
+   Maximum output required time after clock: 9.557ns
+   Maximum combinational path delay: 10.061ns
 
 Timing Details:
 ---------------
@@ -690,26 +690,27 @@ Offset:              2.564ns (Levels of Logic = 2)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'clk_60mHz'
-  Total number of paths / destination ports: 1039 / 81
+  Total number of paths / destination ports: 1045 / 81
 -------------------------------------------------------------------------
-Offset:              9.037ns (Levels of Logic = 5)
-  Source:            u_sys_clk_rst/tick_1khz (FF)
+Offset:              9.557ns (Levels of Logic = 6)
+  Source:            u_debug_module/misc_reg_3 (FF)
   Destination:       tp<7> (PAD)
   Source Clock:      clk_60mHz rising 1.7X
 
-  Data Path: u_sys_clk_rst/tick_1khz to tp<7>
+  Data Path: u_debug_module/misc_reg_3 to tp<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q             60   0.525   2.175  u_sys_clk_rst/tick_1khz (u_sys_clk_rst/tick_1khz)
-     LUT5:I1->O            1   0.254   0.682  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_81 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_81)
-     LUT6:I5->O            1   0.254   0.000  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_4 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_4)
+     FDRE:C->Q             6   0.525   1.104  u_debug_module/misc_reg_3 (u_debug_module/misc_reg_3)
+     LUT3:I0->O            4   0.235   1.080  Mmux_usart2_fpga_rx11 (usart2_fpga_rx_OBUF)
+     LUT6:I2->O            1   0.254   0.958  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_91 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_91)
+     LUT6:I2->O            1   0.254   0.000  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_4 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_4)
      MUXF7:I0->O           1   0.163   1.137  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_2_f7 (debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o1)
      LUT6:I0->O            1   0.254   0.681  Mmux_tp<5>1 (tp_5_OBUF)
      OBUF:I->O                 2.912          tp_5_OBUF (tp<5>)
     ----------------------------------------
-    Total                      9.037ns (4.362ns logic, 4.675ns route)
-                                       (48.3% logic, 51.7% route)
+    Total                      9.557ns (4.597ns logic, 4.960ns route)
+                                       (48.1% logic, 51.9% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'u_multiboot/icap_clk_reg'
@@ -733,25 +734,26 @@ Offset:              2.927ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 33 / 13
+  Total number of paths / destination ports: 41 / 15
 -------------------------------------------------------------------------
-Delay:               8.954ns (Levels of Logic = 6)
-  Source:            rx2 (PAD)
+Delay:               10.061ns (Levels of Logic = 7)
+  Source:            rx3 (PAD)
   Destination:       tp<7> (PAD)
 
-  Data Path: rx2 to tp<7>
+  Data Path: rx3 to tp<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     IBUF:I->O             4   1.328   1.032  rx2_IBUF (rx2_IBUF)
-     LUT6:I3->O            1   0.235   0.958  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_91 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_91)
+     IBUF:I->O             1   1.328   0.790  rx3_IBUF (rx3_IBUF)
+     LUT3:I1->O            4   0.250   1.080  Mmux_usart2_fpga_rx11 (usart2_fpga_rx_OBUF)
+     LUT6:I2->O            1   0.254   0.958  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_91 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_91)
      LUT6:I2->O            1   0.254   0.000  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_4 (Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_4)
      MUXF7:I0->O           1   0.163   1.137  Mmux_debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o_2_f7 (debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o1)
      LUT6:I0->O            1   0.254   0.681  Mmux_tp<5>1 (tp_5_OBUF)
      OBUF:I->O                 2.912          tp_5_OBUF (tp<5>)
     ----------------------------------------
-    Total                      8.954ns (5.146ns logic, 3.808ns route)
-                                       (57.5% logic, 42.5% route)
+    Total                     10.061ns (5.415ns logic, 4.646ns route)
+                                       (53.8% logic, 46.2% route)
 
 =========================================================================
 
@@ -778,8 +780,8 @@ u_multiboot/icap_clk_reg|    2.807|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.03 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.55 secs
  
 --> 
 

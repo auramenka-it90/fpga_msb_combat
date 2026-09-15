@@ -57,6 +57,8 @@ module msb_main (
     output wire                         tx3,             // TX output to DD20 (DI) - P15
     input  wire                         rx3,             // RX input from DD20 (RO) - P14
     output wire                         de3,             // Driver Enable for DD20 - P17
+	 
+	input  wire                         usart2_fpga_de,  // P35 (DE) STM32 PB13)
 	
     // =========================================================================
     // DISCRETE INPUTS (To be synchronized & filtered in FCS Module)
@@ -327,8 +329,11 @@ module msb_main (
     assign usart2_fpga_rx = (uart_mux_sel == 1'b0) ? rx2 : rx3;
 
     // Driver Enables for RS-485 transceivers (Active-High):
-    assign de2 = (uart_mux_sel == 1'b0) ? 1'b1 : 1'b0;
-    assign de3 = (uart_mux_sel == 1'b1) ? 1'b1 : 1'b0;
+  	//	assign de2 = (uart_mux_sel == 1'b0) ? 1'b1 : 1'b0;
+	//  assign de3 = (uart_mux_sel == 1'b1) ? 1'b1 : 1'b0;     
+	
+	assign de2 = (uart_mux_sel == 1'b0) ? usart2_fpga_de : 1'b0;
+    assign de3 = (uart_mux_sel == 1'b1) ? usart2_fpga_de : 1'b0;
 	
     // =========================================================================
     // 11. DIAGNOSTICS TEST POINTS (TP[7:5]) - DYNAMIC MULTIPLEXER

@@ -94,14 +94,14 @@ NET "usart2_fpga_rx"       LOC = "P57"  | IOSTANDARD = LVCMOS33; # To STM32 PA3 
 # RS-485 / RS-422 PORT 1 (Transceiver DD19)
 # =============================================================================
 NET "tx2"                  LOC = "P11"  | IOSTANDARD = LVCMOS33; # To DD19 DI
-NET "rx2"                  LOC = "P10"  | IOSTANDARD = LVCMOS33 | PULLUP; # From DD19 RO
+NET "rx2"                  LOC = "P10"  | IOSTANDARD = LVCMOS33; # From DD19 RO
 NET "de2"                  LOC = "P12"  | IOSTANDARD = LVCMOS33; # To DD19 DE
 
 # =============================================================================
 # RS-485 / RS-422 PORT 2 (Transceiver DD20)
 # =============================================================================
 NET "tx3"                  LOC = "P15"  | IOSTANDARD = LVCMOS33; # To DD20 DI
-NET "rx3"                  LOC = "P14"  | IOSTANDARD = LVCMOS33 | PULLUP; # From DD20 RO
+NET "rx3"                  LOC = "P14"  | IOSTANDARD = LVCMOS33; # From DD20 RO
 NET "de3"                  LOC = "P17"  | IOSTANDARD = LVCMOS33; # To DD20 DE
  
 NET "usart2_fpga_de" 	   LOC = "P35"  | IOSTANDARD = LVCMOS33;
