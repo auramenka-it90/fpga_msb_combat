@@ -33,17 +33,17 @@ NET "OE_DR[0]"             LOC = "P126" | IOSTANDARD = LVCMOS33;
 NET "OE_DR[1]"             LOC = "P124" | IOSTANDARD = LVCMOS33;
 
 # --- FCS Discrete Inputs ---
-NET "DR[0]"                LOC = "P142" | IOSTANDARD = LVCMOS33;
-NET "DR[1]"                LOC = "P141" | IOSTANDARD = LVCMOS33;
-NET "DR[2]"                LOC = "P140" | IOSTANDARD = LVCMOS33;
-NET "DR[3]"                LOC = "P139" | IOSTANDARD = LVCMOS33;
-NET "DR[4]"                LOC = "P138" | IOSTANDARD = LVCMOS33;
-NET "DR[5]"                LOC = "P137" | IOSTANDARD = LVCMOS33;
-NET "DR[6]"                LOC = "P134" | IOSTANDARD = LVCMOS33;
-NET "DR[7]"                LOC = "P133" | IOSTANDARD = LVCMOS33;
-NET "DR[8]"                LOC = "P132" | IOSTANDARD = LVCMOS33;
-NET "DR[9]"                LOC = "P131" | IOSTANDARD = LVCMOS33;
-NET "DR[10]"               LOC = "P127" | IOSTANDARD = LVCMOS33;
+NET "DR[0]"                LOC = "P142" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[1]"                LOC = "P141" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[2]"                LOC = "P140" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[3]"                LOC = "P139" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[4]"                LOC = "P138" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[5]"                LOC = "P137" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[6]"                LOC = "P134" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[7]"                LOC = "P133" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[8]"                LOC = "P132" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[9]"                LOC = "P131" | IOSTANDARD = LVCMOS33 | PULLUP;
+NET "DR[10]"               LOC = "P127" | IOSTANDARD = LVCMOS33 | PULLUP;
 
 NET "HEF"                  LOC = "P123" | IOSTANDARD = LVCMOS33;
 NET "APDS"                 LOC = "P121" | IOSTANDARD = LVCMOS33;
@@ -110,4 +110,7 @@ NET "usart2_fpga_de" 	   LOC = "P35"  | IOSTANDARD = LVCMOS33;
 # FIXED: Reordered to match the physical assignments in msb_main.v
 NET "tp[5]"                LOC = "P81"  | IOSTANDARD = LVCMOS33; # TP5 on P79 (Programmable Pulse Output)
 NET "tp[6]"                LOC = "P80"  | IOSTANDARD = LVCMOS33; # TP6 on P80 (1 kHz Reference Clock)
-NET "tp[7]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status)
+NET "tp[7]"                LOC = "P79"  | IOSTANDARD = LVCMOS33; # TP7 on P81 (Sync Reset Status) 
+
+NET "w25q128_hold" 		   LOC = "P61"  | IOSTANDARD = LVCMOS33 | DRIVE = 12 | SLEW = SLOW;
+NET "w25q128_wp"   		   LOC = "P62"  | IOSTANDARD = LVCMOS33 | DRIVE = 12 | SLEW = SLOW;

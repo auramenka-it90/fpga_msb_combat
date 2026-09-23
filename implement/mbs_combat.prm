@@ -1,0 +1,17 @@
+PROMGEN: Xilinx Prom Generator P.20131013
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+promgen -w -p mcs -c FF -o D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\implement//mbs_combat -s 2048 -u 0000 D:/Work_20XX/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/ver1/rev1/msb_main.bit -spi 
+
+PROM D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\implement\mbs_combat.prm map: Thu Sep 17 18:28:19 2026
+
+Calculating PROM checksum with fill value ff
+
+Format        Mcs86 (32-bit)
+Size          2048K
+PROM start    0000:0000
+PROM end      001f:ffff
+PROM checksum 1acee95a
+
+        Addr1        Addr2                     Date File(s)
+    0000:0000    0005:327b     Sep 15 20:02:08 2026 D:/Work_20XX/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/ver1/rev1/msb_main.bit

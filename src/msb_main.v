@@ -102,15 +102,23 @@ module msb_main (
     // DIAGNOSTIC TEST POINTS & USER LEDS
     // =========================================================================
     output wire [7:5]                   tp,              // TP[7:5] mapped to P79, P80, P81
-    output wire [2:0]                   led              // Status LEDs (P26, P27, P29)
+    output wire [2:0]                   led,             // Status LEDs (P26, P27, P29)	 
+	// =========================================================================
+    // NOISE DEL
+    // =========================================================================
+	output wire							w25q128_hold,
+	output wire							w25q128_wp
 );
 
     // =========================================================================
     // HARDWARE FLASH LOCKOUT
     // Keep external SPI Flash in disabled/standby mode in User Mode.
     // =========================================================================
-    assign w25q128_nss = 1'b1;
-
+    assign w25q128_nss = 1'b1;		 	 
+	
+	assign w25q128_hold = 1'b1;
+	assign w25q128_wp 	= 1'b1;
+	
     // =========================================================================
     // SYSTEM CLOCK & MASTER RESET
     // =========================================================================

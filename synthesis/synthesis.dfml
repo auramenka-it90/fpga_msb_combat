@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.24 secs
  
---> Parameter xsthdpdir set to D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst
+--> Parameter xsthdpdir set to d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis\xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.12 secs
+Total CPU time to Xst completion: 0.24 secs
  
 --> 
 TABLE OF CONTENTS
@@ -178,15 +178,15 @@ Elaborating module <chipscope_ila>.
 
 Synthesizing Unit <msb_main>.
     Related source file is "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v".
-INFO:Xst:3210 - "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v" line 136: Output port <busy> of the instance <spi_bridge_inst> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "D:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\msb_main.v" line 144: Output port <busy> of the instance <spi_bridge_inst> is unconnected or connected to loadless signal.
     Found 1-bit register for signal <clk_monitor_div2>.
     Found 11-bit register for signal <dr_sync2>.
     Found 11-bit register for signal <dr_sync1>.
-    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o> created at line 373.
-    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[9]_tp_signals[31]_Mux_31_o> created at line 374.
-    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[14]_tp_signals[31]_Mux_33_o> created at line 375.
-    Found 16-bit 4-to-1 multiplexer for signal <_n0131> created at line 132.
-    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 312
+    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[4]_tp_signals[31]_Mux_29_o> created at line 381.
+    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[9]_tp_signals[31]_Mux_31_o> created at line 382.
+    Found 1-bit 24-to-1 multiplexer for signal <debug_tp_mux_out[14]_tp_signals[31]_Mux_33_o> created at line 383.
+    Found 16-bit 4-to-1 multiplexer for signal <_n0131> created at line 140.
+    Found 1-bit tristate buffer for signal <spi_stm32_miso> created at line 320
     Summary:
 	inferred  23 D-type flip-flop(s).
 	inferred  18 Multiplexer(s).
@@ -541,10 +541,10 @@ Primitive and Black Box Usage:
 #      FDSE                        : 15
 # Clock Buffers                    : 3
 #      BUFG                        : 3
-# IO Buffers                       : 63
+# IO Buffers                       : 65
 #      IBUF                        : 38
 #      IBUFG                       : 1
-#      OBUF                        : 23
+#      OBUF                        : 25
 #      OBUFT                       : 1
 # DCMs                             : 1
 #      DCM_SP                      : 1
@@ -572,8 +572,8 @@ Slice Logic Distribution:
    Number of unique control sets:        44
 
 IO Utilization: 
- Number of IOs:                          63
- Number of bonded IOBs:                  63  out of    102    61%  
+ Number of IOs:                          65
+ Number of bonded IOBs:                  65  out of    102    63%  
 
 Specific Feature Utilization:
  Number of BUFG/BUFGCTRLs:                3  out of     16    18%  
@@ -780,12 +780,12 @@ u_multiboot/icap_clk_reg|    2.807|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 5.00 secs
-Total CPU time to Xst completion: 5.55 secs
+Total REAL time to Xst completion: 12.00 secs
+Total CPU time to Xst completion: 11.69 secs
  
 --> 
 
-Total memory usage is 4472748 kilobytes
+Total memory usage is 4472756 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :    3 (   0 filtered)
