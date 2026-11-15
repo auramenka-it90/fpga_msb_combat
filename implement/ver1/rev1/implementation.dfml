@@ -1,17 +1,18 @@
-InputFile = d:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/xie1.ini
-Executing "C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\ngdbuild.exe" -p 6SLX4TQG144-3   -sd "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis" -sd "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\compile" -sd "d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src" -uc "msb_main.ucf" "msb_main.ngc" "msb_main.ngd"
+InputFile = d:/Work_20XX/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/xie3.ini
+Executing "C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\ngdbuild.exe" -p 6SLX9TQG144-3  -sd "d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\Coregen" -sd "d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis" -sd "d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\compile" -sd "d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src" -uc "msb_main.ucf" "msb_main.ngc" "msb_main.ngd"
 Release 14.7 - ngdbuild P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe -p
-6SLX4TQG144-3 -sd
-d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis -sd
-d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\compile -sd
-d:\Work_20xx\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src -uc
+6SLX9TQG144-3 -sd
+d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src\Coregen
+-sd d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\synthesis
+-sd d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\compile
+-sd d:\Work_20XX\IT90_COMBAT\Work\PERIPH\MSB\FPGA\C\periph\msb_combat\src -uc
 msb_main.ucf msb_main.ngc msb_main.ngd
 
 Reading NGO file
-"D:/Work_20xx/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/ver
+"D:/Work_20XX/IT90_COMBAT/Work/PERIPH/MSB/FPGA/C/periph/msb_combat/implement/ver
 1/rev1/msb_main.ngc" ...
 Gathering constraint information from source properties...
 Done.
@@ -28,10 +29,6 @@ INFO:ConstraintSystem:178 - TNM 'TNM_IN_CLK', used in period specification
 
 Done...
 
-INFO:NgdBuild:1222 - Setting CLKIN_PERIOD attribute associated with DCM instance
-   u_sys_clk_rst/dcm_inst to 16.666667 ns based on the period specification
-   (<TIMESPEC "TS_IN_CLK" = PERIOD "TNM_IN_CLK" 16.666667 ns HIGH 50%;>
-   [msb_main.ucf(6)]).
 Checking expanded design ...
 
 Partition Implementation Status
@@ -52,10 +49,10 @@ Total CPU time to NGDBUILD completion:   1 sec
 Writing NGDBUILD log file "msb_main.bld"...
 
 NGDBUILD done.
-Executing "C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\map.exe" -p 6SLX4TQG144-3 -o "map.ncd"  -pr b  -ol high  -ir off  -t 1  -xt 0  -register_duplication off  -r 4  -global_opt off  -lc off  -power off  -mt off "msb_main.ngd" "msb_main.pcf"
+Executing "C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\map.exe" -p 6SLX9TQG144-3 -o "map.ncd"  -pr b  -ol high  -ir off  -t 1  -xt 0  -register_duplication off  -r 4  -global_opt off  -lc off  -power off  -mt off "msb_main.ngd" "msb_main.pcf"
 Release 14.7 - Map P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
-Using target part "6slx4tqg144-3".
+Using target part "6slx9tqg144-3".
 Mapping design into LUTs...
 Writing file map.ngm...
 Running directed packing...
@@ -64,54 +61,54 @@ Updating timing models...
 INFO:Map:215 - The Interim Design Summary has been generated in the MAP Report
    (.mrp).
 Running timing-driven placement...
-Total REAL time at the beginning of Placer: 2 secs 
-Total CPU  time at the beginning of Placer: 1 secs 
+Total REAL time at the beginning of Placer: 3 secs 
+Total CPU  time at the beginning of Placer: 2 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:dea6195b) REAL time: 2 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:21c66b18) REAL time: 4 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:dea6195b) REAL time: 2 secs 
+Phase 2.7  Design Feasibility Check (Checksum:21c66b18) REAL time: 4 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:dea6195b) REAL time: 2 secs 
+Phase 3.31  Local Placement Optimization (Checksum:21c66b18) REAL time: 4 secs 
 
 Phase 4.2  Initial Placement for Architecture Specific Features
 
 Phase 4.2  Initial Placement for Architecture Specific Features
-(Checksum:d6a6fc12) REAL time: 3 secs 
+(Checksum:60fcf5dd) REAL time: 5 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 3 secs 
+Phase 5.36  Local Placement Optimization (Checksum:60fcf5dd) REAL time: 5 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:d6a6fc12) REAL time: 3 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:60fcf5dd) REAL time: 5 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 3 secs 
+Phase 7.3  Local Placement Optimization (Checksum:60fcf5dd) REAL time: 5 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:d6a6fc12) REAL time: 3 secs 
+Phase 8.5  Local Placement Optimization (Checksum:60fcf5dd) REAL time: 5 secs 
 
 Phase 9.8  Global Placement
 ....................
-.................................
-Phase 9.8  Global Placement (Checksum:8367ba7d) REAL time: 3 secs 
+.............
+Phase 9.8  Global Placement (Checksum:a7419b4f) REAL time: 5 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:8367ba7d) REAL time: 3 secs 
+Phase 10.5  Local Placement Optimization (Checksum:a7419b4f) REAL time: 5 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:787ee59d) REAL time: 3 secs 
+Phase 11.18  Placement Optimization (Checksum:86226f2f) REAL time: 5 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:787ee59d) REAL time: 3 secs 
+Phase 12.5  Local Placement Optimization (Checksum:86226f2f) REAL time: 5 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:74941c7f) REAL time: 3 secs 
+Phase 13.34  Placement Validation (Checksum:5d9a9567) REAL time: 5 secs 
 
-Total REAL time to Placer completion: 3 secs 
-Total CPU  time to Placer completion: 2 secs 
+Total REAL time to Placer completion: 5 secs 
+Total CPU  time to Placer completion: 4 secs 
 Running post-placement packing...
 Writing output files...
 
@@ -119,33 +116,33 @@ Design Summary:
 Number of errors:      0
 Number of warnings:    0
 Slice Logic Utilization:
-  Number of Slice Registers:                   384 out of   4,800    8%
-    Number used as Flip Flops:                 384
+  Number of Slice Registers:                   479 out of  11,440    4%
+    Number used as Flip Flops:                 479
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        375 out of   2,400   15%
-    Number used as logic:                      366 out of   2,400   15%
-      Number using O6 output only:             224
-      Number using O5 output only:              21
-      Number using O5 and O6:                  121
+  Number of Slice LUTs:                        577 out of   5,720   10%
+    Number used as logic:                      564 out of   5,720    9%
+      Number using O6 output only:             432
+      Number using O5 output only:              22
+      Number using O5 and O6:                  110
       Number used as ROM:                        0
-    Number used as Memory:                       0 out of   1,200    0%
-    Number used exclusively as route-thrus:      9
-      Number with same-slice register load:      7
+    Number used as Memory:                       0 out of   1,440    0%
+    Number used exclusively as route-thrus:     13
+      Number with same-slice register load:     11
       Number with same-slice carry load:         2
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   154 out of     600   25%
-  Number of MUXCYs used:                        28 out of   1,200    2%
-  Number of LUT Flip Flop pairs used:          425
-    Number with an unused Flip Flop:           135 out of     425   31%
-    Number with an unused LUT:                  50 out of     425   11%
-    Number of fully used LUT-FF pairs:         240 out of     425   56%
-    Number of unique control sets:              38
+  Number of occupied Slices:                   265 out of   1,430   18%
+  Number of MUXCYs used:                        44 out of   2,860    1%
+  Number of LUT Flip Flop pairs used:          705
+    Number with an unused Flip Flop:           272 out of     705   38%
+    Number with an unused LUT:                 128 out of     705   18%
+    Number of fully used LUT-FF pairs:         305 out of     705   43%
+    Number of unique control sets:              45
     Number of slice register sites lost
-      to control set restrictions:             152 out of   4,800    3%
+      to control set restrictions:             153 out of  11,440    1%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -154,13 +151,13 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        54 out of     102   52%
-    Number of LOCed IOBs:                       54 out of      54  100%
-    IOB Flip Flops:                              3
+  Number of bonded IOBs:                        64 out of     102   62%
+    Number of LOCed IOBs:                       64 out of      64  100%
+    IOB Flip Flops:                             14
 
 Specific Feature Utilization:
-  Number of RAMB16BWERs:                         0 out of      12    0%
-  Number of RAMB8BWERs:                          0 out of      24    0%
+  Number of RAMB16BWERs:                         0 out of      32    0%
+  Number of RAMB8BWERs:                          0 out of      64    0%
   Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
     Number used as BUFIO2s:                      1
     Number used as BUFIO2_2CLKs:                 0
@@ -173,8 +170,8 @@ Specific Feature Utilization:
   Number of DCM/DCM_CLKGENs:                     1 out of       4   25%
     Number used as DCMs:                         1
     Number used as DCM_CLKGENs:                  0
-  Number of ILOGIC2/ISERDES2s:                   3 out of     200    1%
-    Number used as ILOGIC2s:                     3
+  Number of ILOGIC2/ISERDES2s:                  14 out of     200    7%
+    Number used as ILOGIC2s:                    14
     Number used as ISERDES2s:                    0
   Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     200    0%
   Number of OLOGIC2/OSERDES2s:                   0 out of     200    0%
@@ -182,19 +179,20 @@ Specific Feature Utilization:
   Number of BUFHs:                               0 out of     128    0%
   Number of BUFPLLs:                             0 out of       8    0%
   Number of BUFPLL_MCBs:                         0 out of       4    0%
-  Number of DSP48A1s:                            0 out of       8    0%
+  Number of DSP48A1s:                            0 out of      16    0%
   Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
   Number of PCILOGICSEs:                         0 out of       2    0%
   Number of PLL_ADVs:                            0 out of       2    0%
   Number of PMVs:                                0 out of       1    0%
   Number of STARTUPs:                            0 out of       1    0%
   Number of SUSPEND_SYNCs:                       0 out of       1    0%
 
-Average Fanout of Non-Clock Nets:                3.54
+Average Fanout of Non-Clock Nets:                3.68
 
-Peak Memory Usage:  4518 MB
-Total REAL time to MAP completion:  4 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  4517 MB
+Total REAL time to MAP completion:  6 secs 
+Total CPU time to MAP completion:   4 secs 
 
 Mapping completed.
 See MAP report file "map.mrp" for details.
@@ -203,9 +201,9 @@ Release 14.7 - Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
-Loading device for application Rf_Device from file '6slx4.nph' in environment
+Loading device for application Rf_Device from file '6slx9.nph' in environment
 C:\Xilinx\14.7\ISE_DS\ISE\.
-   "msb_main" is an NCD, version 3.2, device xc6slx4, package tqg144, speed -3
+   "msb_main" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -3
 --------------------------------------------------------------------------------
 Release 14.7 Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
@@ -216,7 +214,7 @@ map.ncd msb_main.pcf -o msb_main_postmap.twr
 
 Design file:              map.ncd
 Physical constraint file: msb_main.pcf
-Device,speed:             xc6slx4,-3 (PRODUCTION 1.23 2013-10-13)
+Device,speed:             xc6slx9,-3 (PRODUCTION 1.23 2013-10-13)
 Report level:             verbose report
 --------------------------------------------------------------------------------
 
@@ -234,13 +232,13 @@ Timing summary:
 
 Timing errors: 0  Score: 0 (Setup/Max: 0, Hold: 0)
 
-Constraints cover 5738 paths, 0 nets, and 1986 connections
+Constraints cover 11747 paths, 0 nets, and 3175 connections
 
 Design statistics:
    Minimum period:   8.000ns (Maximum frequency: 125.000MHz)
 
 
-Analysis completed Tue Jul 07 17:44:35 2026
+Analysis completed Sun Nov 15 14:31:47 2026
 --------------------------------------------------------------------------------
 
 Generating Report ...
@@ -255,8 +253,8 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Constraints file: msb_main.pcf.
-Loading device for application Rf_Device from file '6slx4.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
-   "msb_main" is an NCD, version 3.2, device xc6slx4, package tqg144, speed -3
+Loading device for application Rf_Device from file '6slx9.nph' in environment C:\Xilinx\14.7\ISE_DS\ISE\.
+   "msb_main" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -3
 Par:381 - One or more of the following switches -p and -r is not supported for this architecture.  PAR will
    ignore the switch and processing will continue
 
@@ -270,32 +268,32 @@ Device speed data version:  "PRODUCTION 1.23 2013-10-13".
 Device Utilization Summary:
 
 Slice Logic Utilization:
-  Number of Slice Registers:                   384 out of   4,800    8%
-    Number used as Flip Flops:                 384
+  Number of Slice Registers:                   479 out of  11,440    4%
+    Number used as Flip Flops:                 479
     Number used as Latches:                      0
     Number used as Latch-thrus:                  0
     Number used as AND/OR logics:                0
-  Number of Slice LUTs:                        375 out of   2,400   15%
-    Number used as logic:                      366 out of   2,400   15%
-      Number using O6 output only:             224
-      Number using O5 output only:              21
-      Number using O5 and O6:                  121
+  Number of Slice LUTs:                        577 out of   5,720   10%
+    Number used as logic:                      564 out of   5,720    9%
+      Number using O6 output only:             432
+      Number using O5 output only:              22
+      Number using O5 and O6:                  110
       Number used as ROM:                        0
-    Number used as Memory:                       0 out of   1,200    0%
-    Number used exclusively as route-thrus:      9
-      Number with same-slice register load:      7
+    Number used as Memory:                       0 out of   1,440    0%
+    Number used exclusively as route-thrus:     13
+      Number with same-slice register load:     11
       Number with same-slice carry load:         2
       Number with other load:                    0
 
 Slice Logic Distribution:
-  Number of occupied Slices:                   154 out of     600   25%
-  Number of MUXCYs used:                        28 out of   1,200    2%
-  Number of LUT Flip Flop pairs used:          425
-    Number with an unused Flip Flop:           135 out of     425   31%
-    Number with an unused LUT:                  50 out of     425   11%
-    Number of fully used LUT-FF pairs:         240 out of     425   56%
+  Number of occupied Slices:                   265 out of   1,430   18%
+  Number of MUXCYs used:                        44 out of   2,860    1%
+  Number of LUT Flip Flop pairs used:          705
+    Number with an unused Flip Flop:           272 out of     705   38%
+    Number with an unused LUT:                 128 out of     705   18%
+    Number of fully used LUT-FF pairs:         305 out of     705   43%
     Number of slice register sites lost
-      to control set restrictions:               0 out of   4,800    0%
+      to control set restrictions:               0 out of  11,440    0%
 
   A LUT Flip Flop pair for this architecture represents one LUT paired with
   one Flip Flop within a slice.  A control set is a unique combination of
@@ -304,13 +302,13 @@ Slice Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
 
 IO Utilization:
-  Number of bonded IOBs:                        54 out of     102   52%
-    Number of LOCed IOBs:                       54 out of      54  100%
-    IOB Flip Flops:                              3
+  Number of bonded IOBs:                        64 out of     102   62%
+    Number of LOCed IOBs:                       64 out of      64  100%
+    IOB Flip Flops:                             14
 
 Specific Feature Utilization:
-  Number of RAMB16BWERs:                         0 out of      12    0%
-  Number of RAMB8BWERs:                          0 out of      24    0%
+  Number of RAMB16BWERs:                         0 out of      32    0%
+  Number of RAMB8BWERs:                          0 out of      64    0%
   Number of BUFIO2/BUFIO2_2CLKs:                 1 out of      32    3%
     Number used as BUFIO2s:                      1
     Number used as BUFIO2_2CLKs:                 0
@@ -323,8 +321,8 @@ Specific Feature Utilization:
   Number of DCM/DCM_CLKGENs:                     1 out of       4   25%
     Number used as DCMs:                         1
     Number used as DCM_CLKGENs:                  0
-  Number of ILOGIC2/ISERDES2s:                   3 out of     200    1%
-    Number used as ILOGIC2s:                     3
+  Number of ILOGIC2/ISERDES2s:                  14 out of     200    7%
+    Number used as ILOGIC2s:                    14
     Number used as ISERDES2s:                    0
   Number of IODELAY2/IODRP2/IODRP2_MCBs:         0 out of     200    0%
   Number of OLOGIC2/OSERDES2s:                   0 out of     200    0%
@@ -332,8 +330,9 @@ Specific Feature Utilization:
   Number of BUFHs:                               0 out of     128    0%
   Number of BUFPLLs:                             0 out of       8    0%
   Number of BUFPLL_MCBs:                         0 out of       4    0%
-  Number of DSP48A1s:                            0 out of       8    0%
+  Number of DSP48A1s:                            0 out of      16    0%
   Number of ICAPs:                               0 out of       1    0%
+  Number of MCBs:                                0 out of       2    0%
   Number of PCILOGICSEs:                         0 out of       2    0%
   Number of PLL_ADVs:                            0 out of       2    0%
   Number of PMVs:                                0 out of       1    0%
@@ -344,35 +343,35 @@ Specific Feature Utilization:
 Overall effort level (-ol):   Standard 
 Router effort level (-rl):    Standard 
 
-Starting initial Timing Analysis.  REAL time: 1 secs 
-Finished initial Timing Analysis.  REAL time: 1 secs 
+Starting initial Timing Analysis.  REAL time: 2 secs 
+Finished initial Timing Analysis.  REAL time: 2 secs 
 
 Starting Router
 
 
-Phase  1  : 2200 unrouted;      REAL time: 1 secs 
+Phase  1  : 3569 unrouted;      REAL time: 2 secs 
 
-Phase  2  : 1927 unrouted;      REAL time: 1 secs 
+Phase  2  : 3248 unrouted;      REAL time: 2 secs 
 
-Phase  3  : 863 unrouted;      REAL time: 2 secs 
+Phase  3  : 1520 unrouted;      REAL time: 2 secs 
 
-Phase  4  : 863 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  4  : 1520 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 3 secs 
 
 Updating file: msb_main.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 2 secs 
-Total REAL time to Router completion: 2 secs 
-Total CPU time to Router completion: 2 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 4 secs 
+Total REAL time to Router completion: 4 secs 
+Total CPU time to Router completion: 3 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -390,7 +389,10 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|                 clk | BUFGMUX_X3Y13| No   |  126 |  0.586     |  1.658      |
+|                 clk | BUFGMUX_X3Y13| No   |  184 |  0.598     |  1.666      |
++---------------------+--------------+------+------+------------+-------------+
+|u_sys_clk_rst/clk_60 |              |      |      |            |             |
+|              _ibufg |         Local|      |    2 |  0.000     |  1.996      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -403,8 +405,6 @@ for example SLICE loads not FF loads.
 
 Timing Score: 0 (Setup: 0, Hold: 0, Component Switching Limit: 0)
 
-Number of Timing Constraints that were not applied: 1
-
 Asterisk (*) preceding a constraint indicates it was not met.
    This may be due to a setup or hold violation.
 
@@ -412,12 +412,13 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_u_sys_clk_rst_clk_fx_raw = PERIOD TIME | SETUP       |     3.127ns|     6.873ns|       0|           0
-  GRP "u_sys_clk_rst_clk_fx_raw"         TS | HOLD        |     0.393ns|            |       0|           0
+  TS_u_sys_clk_rst_clk_fx_raw = PERIOD TIME | SETUP       |     2.118ns|     7.882ns|       0|           0
+  GRP "u_sys_clk_rst_clk_fx_raw"         TS | HOLD        |     0.388ns|            |       0|           0
   _IN_CLK / 1.66666667 HIGH 50%             |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_IN_CLK = PERIOD TIMEGRP "TNM_IN_CLK" 1 | MINLOWPULSE |     8.666ns|     8.000ns|       0|           0
-  6.666667 ns HIGH 50%                      |             |            |            |        |            
+  TS_IN_CLK = PERIOD TIMEGRP "TNM_IN_CLK" 1 | SETUP       |    14.681ns|     1.985ns|       0|           0
+  6.666667 ns HIGH 50%                      | HOLD        |     0.460ns|            |       0|           0
+                                            | MINLOWPULSE |     8.666ns|     8.000ns|       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -431,8 +432,8 @@ Derived Constraints for TS_IN_CLK
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_IN_CLK                      |     16.667ns|      8.000ns|     11.455ns|            0|            0|            0|         5738|
-| TS_u_sys_clk_rst_clk_fx_raw   |     10.000ns|      6.873ns|          N/A|            0|            0|         5738|            0|
+|TS_IN_CLK                      |     16.667ns|      8.000ns|     13.137ns|            0|            0|           26|        11721|
+| TS_u_sys_clk_rst_clk_fx_raw   |     10.000ns|      7.882ns|          N/A|            0|            0|        11721|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -442,10 +443,10 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 2 secs 
-Total CPU time to PAR completion: 2 secs 
+Total REAL time to PAR completion: 4 secs 
+Total CPU time to PAR completion: 4 secs 
 
-Peak Memory Usage:  4458 MB
+Peak Memory Usage:  4462 MB
 
 Placer: Placement generated during map.
 Routing: Completed - No errors found.
@@ -465,9 +466,9 @@ Release 14.7 - Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
-Loading device for application Rf_Device from file '6slx4.nph' in environment
+Loading device for application Rf_Device from file '6slx9.nph' in environment
 C:\Xilinx\14.7\ISE_DS\ISE\.
-   "msb_main" is an NCD, version 3.2, device xc6slx4, package tqg144, speed -3
+   "msb_main" is an NCD, version 3.2, device xc6slx9, package tqg144, speed -3
 --------------------------------------------------------------------------------
 Release 14.7 Trace  (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
@@ -478,7 +479,7 @@ msb_main.ncd msb_main.pcf -o msb_main_postpar.twr
 
 Design file:              msb_main.ncd
 Physical constraint file: msb_main.pcf
-Device,speed:             xc6slx4,-3 (PRODUCTION 1.23 2013-10-13)
+Device,speed:             xc6slx9,-3 (PRODUCTION 1.23 2013-10-13)
 Report level:             verbose report
 --------------------------------------------------------------------------------
 
@@ -494,13 +495,13 @@ Timing summary:
 
 Timing errors: 0  Score: 0 (Setup/Max: 0, Hold: 0)
 
-Constraints cover 5738 paths, 0 nets, and 1986 connections
+Constraints cover 11747 paths, 0 nets, and 3175 connections
 
 Design statistics:
    Minimum period:   8.000ns (Maximum frequency: 125.000MHz)
 
 
-Analysis completed Tue Jul 07 17:44:41 2026
+Analysis completed Sun Nov 15 14:31:56 2026
 --------------------------------------------------------------------------------
 
 Generating Report ...

@@ -1,54 +1,90 @@
-
 `include "define.v"
+`timescale 1ns / 1ps
+
+// =============================================================================
+// MODULE: debug_module (Device ID = 1)
+// 
+// DESCRIPTION:
+//  System Debug, Configuration & Testpoint Routing Module.
+//  Target Silicon: Xilinx Spartan-6 (XC6SLX4 / XC6SLX9-TQG144)
+//  Toolchain:      ISE 14.7 / XST
+//  All comments in ASCII English.
+// =============================================================================
 
 module debug_module #(
-    parameter ADR_WIDTH = 6
+    parameter ADR_WIDTH  = `_D_S_CHIP_ADDR_WIDTH_, // 6 bits register offset
+    parameter DATA_WIDTH = `_D_DATA_WIDTH_         // 16 bits data bus
 )(
-    input  wire                 clk,
-    input  wire                 rst,
-    input  wire [ADR_WIDTH-1:0] cpu_addr,
-    input  wire [15:0]          cpu_di,
-    input  wire                 cpu_wr, 
-    input  wire                 cpu_rd, 
-    output wire [15:0]          cpu_do,
-    output wire [15:0]          test_out
+    input  wire                  clk,
+    input  wire                  rst,
+    
+    // --- Polling SPI CPU Bus Interface ---
+    input  wire [ADR_WIDTH-1:0]  cpu_addr,
+    input  wire [DATA_WIDTH-1:0] cpu_di,
+    input  wire                  cpu_wr, 
+    input  wire                  cpu_rd, 
+    output wire [DATA_WIDTH-1:0] cpu_do,
+    
+    // --- Internal Hardware Control Outputs ---
+    output wire [DATA_WIDTH-1:0] misc_out,         // Bits [2:0]=LEDs, [3]=UART MUX, [11:4]=Timer Div
+    output wire [14:0]           tp_mux_out        // Dynamic TP Routing: [4:0]=TP5, [9:5]=TP6, [14:10]=TP7
 );
-    // Address definition
-    localparam BASE_ADDR      = 6'h00;
-    localparam P_OFF_FEED_BACK = 0; 
-    localparam P_OFF_CONST     = 1;
-    localparam P_OFF_MISC      = 2;
-    localparam P_CONST_VAL     = 16'hDEAD;
 
-    reg [15:0] fb_reg;
-    reg [15:0] misc_reg;
+    // =========================================================================
+    // 1. REGISTER MAP OFFSETS & CONSTANTS
+    // =========================================================================
+    localparam P_OFF_FEED_BACK = 6'd0; 
+    localparam P_OFF_CONST     = 6'd1;
+    localparam P_OFF_MISC      = 6'd2;
+    localparam P_OFF_TP_MUX    = 6'd3;
 
-    // Read Decoding
-    wire rd_fb    = (cpu_addr == (BASE_ADDR + P_OFF_FEED_BACK)) && cpu_rd;
-    wire rd_const = (cpu_addr == (BASE_ADDR + P_OFF_CONST))     && cpu_rd;
-    wire rd_misc  = (cpu_addr == (BASE_ADDR + P_OFF_MISC))      && cpu_rd;
+    localparam [DATA_WIDTH-1:0] P_CONST_VAL    = 16'hDEAD; // Alive check signature
 
-    // Write Decoding
-    wire wr_fb    = (cpu_addr == (BASE_ADDR + P_OFF_FEED_BACK)) && cpu_wr;
-    wire wr_misc  = (cpu_addr == (BASE_ADDR + P_OFF_MISC))      && cpu_wr;
+    reg [DATA_WIDTH-1:0] fb_reg;
+    reg [DATA_WIDTH-1:0] misc_reg;
+    reg [14:0]           tp_mux_reg;
 
-    // Output Mux
-    assign cpu_do = rd_fb    ? fb_reg      :
-                    rd_const ? P_CONST_VAL :
-                    rd_misc  ? misc_reg    :
-                    16'h0000;
+    // =========================================================================
+    // 2. REGISTER WRITE DECODING & EXECUTION
+    // =========================================================================
+    wire wr_fb       = (cpu_addr == P_OFF_FEED_BACK) && cpu_wr;
+    wire wr_misc     = (cpu_addr == P_OFF_MISC)      && cpu_wr;
+    wire wr_tp_mux   = (cpu_addr == P_OFF_TP_MUX)    && cpu_wr;
 
-    // Register Logic
     always @(posedge clk) begin
         if (rst) begin
-            fb_reg   <= 16'h0000;
-            misc_reg <= 16'h0000;
+            fb_reg           <= {DATA_WIDTH{1'b0}};
+            // FAIL-SAFE DEFAULT: tick divider = 10 ms (bits [11:4] = 8'h0A -> 100 Hz).
+            // After any FPGA reset (incl. external PROG_B) the sample-and-hold
+            // latch and timer IRQ restart by themselves, even if the STM32 does
+            // not re-send the configuration. LEDs off, UART mux = channel 1.
+            misc_reg         <= 16'h00A0;
+            // Default testpoint routing (5-bit index per TP, index 0 = GND):
+            //   TP7=[14:10]=4 -> reset state, TP6=[9:5]=2 -> 1 kHz, TP5=[4:0]=3 -> 100 Hz.
+            tp_mux_reg       <= {5'd4, 5'd2, 5'd3};
         end else begin
-            if (wr_fb)   fb_reg   <= cpu_di;
-            if (wr_misc) misc_reg <= cpu_di;
+            if (wr_fb)       fb_reg           <= cpu_di;
+            if (wr_misc)     misc_reg         <= cpu_di;
+            if (wr_tp_mux)   tp_mux_reg       <= cpu_di[14:0];
         end
     end
 
-    assign test_out = misc_reg; 
+    assign misc_out   = misc_reg;
+    assign tp_mux_out = tp_mux_reg;
+
+    // =========================================================================
+    // 3. REGISTER READ DECODING
+    // =========================================================================
+    wire rd_fb     = (cpu_addr == P_OFF_FEED_BACK) && cpu_rd;
+    wire rd_const  = (cpu_addr == P_OFF_CONST)     && cpu_rd;
+    wire rd_misc   = (cpu_addr == P_OFF_MISC)      && cpu_rd;
+    wire rd_tp_mux = (cpu_addr == P_OFF_TP_MUX)    && cpu_rd;
+
+    assign cpu_do = 
+        rd_fb     ? fb_reg             :
+        rd_const  ? P_CONST_VAL        :
+        rd_misc   ? misc_reg           :
+        rd_tp_mux ? {1'b0, tp_mux_reg} :
+        {DATA_WIDTH{1'b0}};
 
 endmodule
