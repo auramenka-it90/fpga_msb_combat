@@ -27,7 +27,7 @@
 
 | Параметр | Значение |
 | :--- | :--- |
-| Целевая БИС | Xilinx Spartan-6, XC6SLX4-TQG144 |
+| Целевая БИС | Xilinx Spartan-6, XC6SLX9-TQG144 |
 | Исходный язык | Verilog-2001 (без SystemVerilog) |
 | Toolchain | Aldec Active-HDL 9.2 (симуляция) / ISE 14.7 + XST (синтез) |
 | Top-модуль | `msb_main` (файл `src/msb_main.v`) |
