@@ -5,7 +5,7 @@ run
 -ifmt mixed
 -ofn msb_main
 -ofmt NGC
--p xc6slx4tqg144-3
+-p xc6slx9tqg144-3
 -top msb_main
 -opt_mode speed
 -opt_level 1
