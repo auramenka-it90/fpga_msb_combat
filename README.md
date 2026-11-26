@@ -35,24 +35,22 @@
 
 ## Структура репозитория
 
-```
-msb_combat/
-├── src/                     исходники Verilog-2001 + ограничения
-│   ├── msb_main.v           top-модуль
-│   ├── msb_main.ucf         pin-out и тайминги (эталонный)
-│   ├── define.v             глобальные параметры (шина 16 бит, адреса, DEV ID)
-│   ├── system_clk_rst.v     DCM 60→100 МГц, POR, сброс, tick_1khz
-│   ├── debounce_filter .v   параметрический фильтр дребезга
-│   ├── programmable_tick_divider.v
-│   ├── modules/             debug_module, fcs_module, interrupt_controller
-│   ├── stm32_2_fpga_spi_bridge/  SPI-слейв мост (+ альтернативный multi-word, не в сборке)
-│   └── Coregen/             ChipScope ICON/ILA (под USE_CHIPSCOPE)
-├── implement/ver1/rev1/     реализация ISE: ucf-копия, .bit, отчёты, бэкапы pinmap
-├── synthesis/               отчёты XST
-├── tb/                      testbench (tb_spi_bridge.v, проверялся в EDA Playground)
-├── msb_combat.adf           проект ISE Project Navigator
-└── ОПИСАНИЕ_ПРОШИВКИ_MSB_COMBAT.md   ПОЛНАЯ документация (карты регистров, битовые карты, TP)
-```
+| Путь | Назначение |
+| :--- | :--- |
+| `src/msb_main.v` | верхний уровень |
+| `src/msb_main.ucf` | назначения выводов и ограничения по тактам (эталонный) |
+| `src/define.v` | глобальные параметры (шина 16 бит, адреса, ID устройств) |
+| `src/system_clk_rst.v` | DCM 60→100 МГц, POR, сброс, `tick_1khz` |
+| `src/debounce_filter .v` | параметрический фильтр дребезга |
+| `src/programmable_tick_divider.v` | программируемый делитель такта выборки |
+| `src/modules/` | `debug_module`, `fcs_module`, `interrupt_controller` |
+| `src/stm32_2_fpga_spi_bridge/` | SPI-слейв мост (альтернативный multi-word в сборку не входит) |
+| `src/Coregen/` | ChipScope ICON/ILA (под macro `USE_CHIPSCOPE`) |
+| `implement/ver1/rev1/` | реализация ISE: копия `.ucf`, `.bit`, отчёты, архивные версии назначений выводов |
+| `synthesis/` | отчёты XST |
+| `tb/` | тестбенчи (`tb_spi_bridge.v`, проверен в EDA Playground) |
+| `msb_combat.adf` | проект ISE Project Navigator |
+| `ОПИСАНИЕ_ПРОШИВКИ_MSB_COMBAT.md` | полная документация (карты регистров, битовые карты, точки TP) |
 
 ## Сборка
 
